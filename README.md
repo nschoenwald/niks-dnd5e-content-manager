@@ -8,9 +8,15 @@
 A content manager for D&amp;D 5e in FoundryVTT. Supports 5e v4+
 
 > #### About this fork
-> This is Nik's fork of [jennis0's DnD Content Manager](https://github.com/jennis0/dcm) for Foundry V14. It keeps the
-> same module ID, so existing worlds keep their settings. To install or switch to it, use this Manifest URL:
+> This is Nik's fork of [jennis0's DnD Content Manager](https://github.com/jennis0/dcm) for Foundry V14. It is
+> installed as a separate module, **Nik's DnD Content Manager** (`niks-dnd5e-content-manager`), so Foundry's update
+> check always uses this fork. Install it with this Manifest URL:
 > `https://github.com/nschoenwald/niks-dnd5e-content-manager/releases/latest/download/module.json`
+>
+> **Switching from the original module:** install this one, then in each world disable "DnD Content Manager", enable
+> "Nik's DnD Content Manager" and log in as GM. Your settings (sources, allowed content, filters, journal options)
+> are copied over automatically the first time and the page reloads once. When all worlds are done, uninstall the
+> original module.
 
 > #### Older Version of Foundry
 > Foundry v12 and D&D v3.3.1/v4.4 are supported by a previous release [v1.4.5](https://github.com/jennis0/dcm/releases/download/v1.4.5/module.json). To manually install the module copy https://github.com/jennis0/dcm/releases/download/v1.4.5/module.json into the Manifest URL textbox on the install module page

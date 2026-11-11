@@ -1,4 +1,7 @@
-export const MODULE_NAME = "dnd5e-content-manager"
+export const MODULE_NAME = "niks-dnd5e-content-manager"
+
+/** Module ID used before the fork got its own ID (14.2.0); settings are migrated from it once. */
+export const LEGACY_MODULE_NAME = "dnd5e-content-manager"
 export const MODULE_LABEL = "DnD Content Manager"
 
 /**

@@ -177,7 +177,7 @@ pages:
         desired.</p></li><li><p>Customise the pages generated Player Handbook
         for Classes, Subclasses, Species, and Backgrounds by adding your custom
         pages to the override journals in the DCM Journals
-        Compendium</p></li><li><p>Added@UUID[Compendium.dnd5e-content-manager.dcm-journals.JournalEntry.7DfYKeYTdYZnM5cY]{
+        Compendium</p></li><li><p>Added@UUID[Compendium.niks-dnd5e-content-manager.dcm-journals.JournalEntry.7DfYKeYTdYZnM5cY]{
         in-game manual} in the DCM Journals compendium</p></li></ul></div><p>Bug
         Fixes:</p><ul><li><p>Fixed list overflow issue in the Source Selector
         when the final compendium in the list was only one entry

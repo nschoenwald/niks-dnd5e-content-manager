@@ -1,6 +1,6 @@
 import { exportSettings, importSettings } from "./export.mjs";
 import { log } from "./lib.mjs";
-import { getSetting, SETTINGS, MODULE_LABEL, MODULE_NAME} from "./settings.mjs";
+import { getSetting, SETTINGS, MODULE_LABEL, MODULE_NAME, LEGACY_MODULE_NAME } from "./settings.mjs";
 import { Version } from "./version-utils.mjs";
 
 /**
@@ -54,7 +54,7 @@ export async function showChangelog() {
     }
 
     const journal = await fromUuid(
-        "Compendium.dnd5e-content-manager.dcm-journals.JournalEntry.TwVIF5nUDBsdcWxs"
+        `Compendium.${MODULE_NAME}.dcm-journals.JournalEntry.TwVIF5nUDBsdcWxs`
     );
     if (!journal) {
         log("No journal found, not showing changelog")
@@ -86,4 +86,81 @@ export function handleMigrations() {
             CONFIG.dndContentManager.migrationData = null;
         })
     }
+}
+
+/* -------------------------------------------- */
+/*  Migration from the old module ID (14.2.0)   */
+/* -------------------------------------------- */
+
+const LEGACY_PREFIX = `${LEGACY_MODULE_NAME}.`;
+const NEW_PREFIX = `${MODULE_NAME}.`;
+
+/**
+ * Points compendium references inside a stored setting value at this module's journal pack.
+ * @param {string|null} raw - The raw JSON string stored for the setting.
+ * @returns {string|null}
+ */
+function renameLegacyReferences(raw) {
+    if (typeof raw !== "string") return raw;
+    return raw.replaceAll(`Compendium.${LEGACY_MODULE_NAME}.`, `Compendium.${MODULE_NAME}.`);
+}
+
+/**
+ * Copies client-scope settings (browser localStorage) saved under the old module ID to the new ID.
+ * Runs at the start of init, before the settings are registered. Keys that already exist are left alone.
+ */
+export function migrateLegacyClientSettings() {
+    try {
+        const legacyKeys = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key?.startsWith(LEGACY_PREFIX)) legacyKeys.push(key);
+        }
+        for (const key of legacyKeys) {
+            const newKey = NEW_PREFIX + key.slice(LEGACY_PREFIX.length);
+            if (localStorage.getItem(newKey) !== null) continue;
+            localStorage.setItem(newKey, renameLegacyReferences(localStorage.getItem(key)));
+            log(`Migration: copied client setting ${key} to ${newKey}`);
+        }
+    } catch (e) {
+        console.warn(`${MODULE_LABEL} | Could not migrate client settings from ${LEGACY_MODULE_NAME}`, e);
+    }
+}
+
+/**
+ * Copies world and user settings saved under the old module ID ("dnd5e-content-manager", shared with
+ * jennis0's original) to the new ID. Only the active GM writes them, and only keys without a value under
+ * the new ID are copied, so this runs once per world and never overwrites newer choices.
+ * The old Setting documents are kept, so the original module still works if it is reinstalled.
+ * @returns {Promise<boolean>} True if settings were copied and the page is reloading.
+ */
+export async function migrateLegacyWorldSettings() {
+    if (game.modules.get(LEGACY_MODULE_NAME)?.active) {
+        ui.notifications.warn(`${MODULE_LABEL}: The original "DnD Content Manager" module is also active in this world. `
+            + `Disable it and keep only "Nik's DnD Content Manager".`, { permanent: true });
+    }
+    if (!game.users.activeGM?.isSelf) return false;
+
+    const storage = game.settings.storage.get("world");
+    const toCreate = [];
+    for (const setting of storage) {
+        if (!setting.key.startsWith(LEGACY_PREFIX)) continue;
+        const key = NEW_PREFIX + setting.key.slice(LEGACY_PREFIX.length);
+        if (storage.getSetting(key, setting.user)) continue;
+        toCreate.push({ key, value: renameLegacyReferences(setting._source.value), user: setting.user });
+    }
+    if (!toCreate.length) return false;
+
+    try {
+        await Setting.implementation.createDocuments(toCreate);
+    } catch (e) {
+        console.error(`${MODULE_LABEL} | Could not migrate settings from ${LEGACY_MODULE_NAME}`, e);
+        ui.notifications.error(`${MODULE_LABEL}: Could not copy your settings from the previous module version. `
+            + "See the console (F12) for details.", { permanent: true });
+        return false;
+    }
+    log(`Migration: copied ${toCreate.length} settings from ${LEGACY_MODULE_NAME}`);
+    ui.notifications.info(`${MODULE_LABEL}: Your settings were copied from the previous module version. Reloading…`);
+    foundry.utils.debouncedReload();
+    return true;
 }

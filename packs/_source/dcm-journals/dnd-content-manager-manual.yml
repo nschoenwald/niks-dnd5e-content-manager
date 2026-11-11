@@ -19,8 +19,8 @@ pages:
         well as make it easy to swap out individual items, spells, classes, and
         more for homebrewed or adjusted alternatives.</p><p>Getting started is
         easy, after installing the module you simply need
-        to:</p><ul><li>@UUID[Compendium.dnd5e-content-manager.dcm-journals.JournalEntry.F8eFtw8Pjvu2cdeF.JournalEntryPage.LRb3a7ByUAdCsnxD]{Configuring
-        Sources}</li><li>@UUID[Compendium.dnd5e-content-manager.dcm-journals.JournalEntry.F8eFtw8Pjvu2cdeF.JournalEntryPage.hhDxuG5HPQnmPTur]{Selecting
+        to:</p><ul><li>@UUID[Compendium.niks-dnd5e-content-manager.dcm-journals.JournalEntry.F8eFtw8Pjvu2cdeF.JournalEntryPage.LRb3a7ByUAdCsnxD]{Configuring
+        Sources}</li><li>@UUID[Compendium.niks-dnd5e-content-manager.dcm-journals.JournalEntry.F8eFtw8Pjvu2cdeF.JournalEntryPage.hhDxuG5HPQnmPTur]{Selecting
         Content}</li></ul><p>And you're all ready to go.</p><p>By default, DCM
         controls which items appear in the core D&amp;D5e Compendium Browser,
         but it also supports some popular content search modules as well. If you
@@ -132,7 +132,7 @@ pages:
         <p>Choosing what content is available to your players is the main focus
         of the DCM module. Before doing so, make sure you've setup your sources
         as described in
-        @UUID[Compendium.dnd5e-content-manager.dcm-journals.JournalEntry.F8eFtw8Pjvu2cdeF.JournalEntryPage.LRb3a7ByUAdCsnxD]{Configuring
+        @UUID[Compendium.niks-dnd5e-content-manager.dcm-journals.JournalEntry.F8eFtw8Pjvu2cdeF.JournalEntryPage.LRb3a7ByUAdCsnxD]{Configuring
         Sources}</p><div><h3>Opening the Content Configuration
         Window</h3></div><p>You can open this window either by using the
         'Configure Player Content' button in the Compendium Sidebar or from the

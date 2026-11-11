@@ -1,3 +1,8 @@
+### 14.2.0
+Other Changes:
+- This fork is now its own module, "Nik's DnD Content Manager". Before, it shared its ID with jennis0's original, so Foundry's Update button kept replacing it with the original's version 1.6.0
+- To switch: install it with the Manifest URL `https://github.com/nschoenwald/niks-dnd5e-content-manager/releases/latest/download/module.json`, disable "DnD Content Manager" in your world, enable "Nik's DnD Content Manager" and log in as GM. Your settings are copied over automatically and the page reloads once. Then uninstall the original module
+
 ### 14.1.3
 Other Changes:
 - Verified with Foundry VTT 14.370 and D&D 5e 6.1.0

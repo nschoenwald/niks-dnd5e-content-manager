@@ -3,7 +3,7 @@ import { MODULE_NAME, setSetting, SETTINGS } from "./settings.mjs";
 import { log } from "./lib.mjs";
 import { initSettings, initVersionSetting, registerCompendiumOverrideSetting } from "./register-settings.mjs"
 import { registerSpellLists } from "./spell-lists.mjs";
-import { handleMigrations } from "./migrations.mjs";
+import { handleMigrations, migrateLegacyClientSettings, migrateLegacyWorldSettings } from "./migrations.mjs";
 
 import { patchCompendiumBrowser } from "./integrations/compendium-filters.mjs";
 import { patchQuickInsert } from "./integrations/quick-insert.mjs";
@@ -17,6 +17,9 @@ import { patchHeromancer } from "./integrations/heromancer.mjs";
 import { addCompendiumOverrideHooks, getOverrideCompendiumOptions, handleOverrideSettingChange } from "./presentation/override-compendium.mjs";
 
 Hooks.once("init", () => {
+
+    //Copy browser-stored settings from the old module ID before anything reads them
+    migrateLegacyClientSettings();
 
     //Create version setting first as this is relied on by the migration
     initVersionSetting();
@@ -55,6 +58,9 @@ Hooks.once("init", () => {
 
 
 Hooks.once("ready", async () => {
+
+    //Copy world settings from the old module ID once; the page reloads afterwards
+    if (await migrateLegacyWorldSettings()) return;
 
     //Add our monkey patch to the Compendium Browser
     patchCompendiumBrowser();
