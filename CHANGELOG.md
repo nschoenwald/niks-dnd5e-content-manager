@@ -1,3 +1,7 @@
+### 14.1.2
+Bug Fixes:
+- The item sheet toggle is back: open an item, click the ⋮ button in its title bar and choose "Enable Item in DCM" or "Disable Item in DCM". It had stopped appearing with recent D&D 5e versions
+
 ### 14.1.1
 Bug Fixes:
 - Fixed a server error ("Cannot use 'in' operator to search for 'baseItem'…") that could break opening compendiums, the trait and proficiency settings on character sheets and other modules' compendium lookups while DnD Content Manager was active

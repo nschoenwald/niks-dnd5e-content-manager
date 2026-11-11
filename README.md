@@ -48,6 +48,8 @@ Once installed it is simple to configure which options are available via the mod
 
 Once you've done this, any unselected content is hidden within the Compendium Browser. You can add or remove new options at any time, and unlike with creating compendium specifically for a particular game - there's no deletion, duplication or copying involved so no need to manage updates or changes! Though you'll need to re-generate the player journals when options change
 
+You can also enable or disable a single item from its sheet: open the item, click the **⋮** button in the sheet's title bar and choose **Enable Item in DCM** or **Disable Item in DCM**. If the item's compendium isn't one of your selected sources, the entry opens the Source Selection menu instead.
+
 The configuration menus, the Compendium sidebar buttons and the item sheet toggle are available to the GM and to any user with the **Modify Configuration Settings** permission (set in Foundry's Configure Permissions menu), so you can let an Assistant GM or a trusted player manage the allowed content.
 
 [DCM-demo.webm](https://github.com/user-attachments/assets/5599f62d-e2ae-4390-91f6-2115491de756)
