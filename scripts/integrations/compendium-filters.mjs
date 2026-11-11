@@ -51,6 +51,7 @@ function patchResultsContext() {
 
 /**
  * Updates the GM View button, the window class and the note above the results to match the browser's state.
+ * The note uses dnd5e's own `.note.info` style (with its "i" marker).
  * @param {CompendiumBrowser} app
  */
 function syncGmViewUI(app) {
@@ -76,8 +77,9 @@ function syncGmViewUI(app) {
     if (active && !note) {
         note = document.createElement("p");
         note.className = "note info dcm-gm-view-note";
-        note.innerHTML = `<i class="fa-solid fa-eye" inert></i> ${game.i18n.localize("DCM.GMView.Note")}`;
-        (results.querySelector(".inventory-element") ?? results).prepend(note);
+        note.textContent = game.i18n.localize("DCM.GMView.Note");
+        // The part element is the template's root section, so the note becomes a direct child like dnd5e's notes
+        results.prepend(note);
     } else if (!active && note) {
         note.remove();
     }

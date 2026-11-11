@@ -1,3 +1,7 @@
+### 14.3.1
+Bug Fixes:
+- GM View no longer draws a line through the Compendium Browser's title, and the "i" icon of the GM View note is no longer cut off
+
 ### 14.3.0
 New Features:
 - GM View for the Compendium Browser: GMs get an eye button in the browser's title bar that shows all content, unfiltered, in that window. A note above the results shows when it's on. Every newly opened browser starts in the normal player view, and players don't see the button

@@ -57,7 +57,7 @@ Once installed it is simple to configure which options are available via the mod
 Once you've done this, any unselected content is hidden within the Compendium Browser. You can add or remove new options at any time, and unlike with creating compendium specifically for a particular game - there's no deletion, duplication or copying involved so no need to manage updates or changes! Though you'll need to re-generate the player journals when options change
 
 ### GM View in the Compendium Browser
-GMs see an eye button in the Compendium Browser's title bar. Click it to switch that window to **GM View**, which shows all content, including what is hidden from players. A note above the results and a gold line under the title bar show that GM View is on. Click the button again to go back to the player view. GM View only affects the window you switched, is never saved, and every newly opened Compendium Browser starts in the player view. Players don't see the button.
+GMs see an eye button in the Compendium Browser's title bar. Click it to switch that window to **GM View**, which shows all content, including what is hidden from players. A note above the results and the gold eye button show that GM View is on. Click the button again to go back to the player view. GM View only affects the window you switched, is never saved, and every newly opened Compendium Browser starts in the player view. Players don't see the button.
 
 You can also enable or disable a single item from its sheet: open the item, click the **⋮** button in the sheet's title bar and choose **Enable Item in DCM** or **Disable Item in DCM**. If the item's compendium isn't one of your selected sources, the entry opens the Source Selection menu instead.
 

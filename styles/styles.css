@@ -641,14 +641,9 @@
     text-shadow: 0 0 6px var(--dcm-gm-view-accent);
   }
 
-  .application.dcm-gm-view-active .window-header {
-    box-shadow: inset 0 -2px 0 var(--dcm-gm-view-accent);
-  }
-
-  .application .dcm-gm-view-note {
-    margin: 0 0 0.5rem;
-  }
-
-  .application .dcm-gm-view-note i {
-    color: var(--dcm-gm-view-accent);
+  /* dnd5e draws the note's "i" marker 7px outside the box and only leaves 4px, so the scrolling results part
+     clipped it. 8px keeps the marker inside. */
+  .dnd5e2.compendium-browser .results > .dcm-gm-view-note {
+    margin-inline-start: 8px;
+    margin-block-end: 0.5rem;
   }
