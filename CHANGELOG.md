@@ -1,3 +1,7 @@
+### 14.1.3
+Other Changes:
+- Verified with Foundry VTT 14.370 and D&D 5e 6.1.0
+
 ### 14.1.2
 Bug Fixes:
 - The item sheet toggle is back: open an item, click the ⋮ button in its title bar and choose "Enable Item in DCM" or "Disable Item in DCM". It had stopped appearing with recent D&D 5e versions
