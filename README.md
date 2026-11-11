@@ -1,11 +1,16 @@
 # DnD Content Manager
-![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjennis0%2Fdcm%2Fmain%2Fmodule.json&label=Foundry%20Version&query=$.compatibility.verified&colorB=orange)
-![Dynamic Json Bade](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjennis0%2Fdcm%2Fmain%2Fmodule.json&query=$.relationships.systems%5B%3A1%5D.compatibility.minimum&label=DnD%205e%20Minimum%20Version&color=orange)
-![Dynamic Json Bade](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjennis0%2Fdcm%2Fmain%2Fmodule.json&query=$.relationships.systems%5B%3A1%5D.compatibility.verified&label=DnD%205e%20Verified%20Version&color=orange)
+![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fnschoenwald%2Fniks-dnd5e-content-manager%2Fmain%2Fmodule.json&label=Foundry%20Version&query=$.compatibility.verified&colorB=orange)
+![Dynamic Json Bade](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fnschoenwald%2Fniks-dnd5e-content-manager%2Fmain%2Fmodule.json&query=$.relationships.systems%5B%3A1%5D.compatibility.minimum&label=DnD%205e%20Minimum%20Version&color=orange)
+![Dynamic Json Bade](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fnschoenwald%2Fniks-dnd5e-content-manager%2Fmain%2Fmodule.json&query=$.relationships.systems%5B%3A1%5D.compatibility.verified&label=DnD%205e%20Verified%20Version&color=orange)
 
-![Repository License](https://img.shields.io/github/license/jennis0/dcm)
+![Repository License](https://img.shields.io/github/license/nschoenwald/niks-dnd5e-content-manager)
 
 A content manager for D&amp;D 5e in FoundryVTT. Supports 5e v4+
+
+> #### About this fork
+> This is Nik's fork of [jennis0's DnD Content Manager](https://github.com/jennis0/dcm) for Foundry V14. It keeps the
+> same module ID, so existing worlds keep their settings. To install or switch to it, use this Manifest URL:
+> `https://github.com/nschoenwald/niks-dnd5e-content-manager/releases/latest/download/module.json`
 
 > #### Older Version of Foundry
 > Foundry v12 and D&D v3.3.1/v4.4 are supported by a previous release [v1.4.5](https://github.com/jennis0/dcm/releases/download/v1.4.5/module.json). To manually install the module copy https://github.com/jennis0/dcm/releases/download/v1.4.5/module.json into the Manifest URL textbox on the install module page
@@ -42,6 +47,8 @@ Once installed it is simple to configure which options are available via the mod
 5. (Optional) To enable Spotlight Omnisearch or Quick Insert integration make sure you select this in the main settings menu and reload.
 
 Once you've done this, any unselected content is hidden within the Compendium Browser. You can add or remove new options at any time, and unlike with creating compendium specifically for a particular game - there's no deletion, duplication or copying involved so no need to manage updates or changes! Though you'll need to re-generate the player journals when options change
+
+The configuration menus, the Compendium sidebar buttons and the item sheet toggle are available to the GM and to any user with the **Modify Configuration Settings** permission (set in Foundry's Configure Permissions menu), so you can let an Assistant GM or a trusted player manage the allowed content.
 
 [DCM-demo.webm](https://github.com/user-attachments/assets/5599f62d-e2ae-4390-91f6-2115491de756)
 

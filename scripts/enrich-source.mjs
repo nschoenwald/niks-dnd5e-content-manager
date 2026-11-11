@@ -9,11 +9,14 @@ function getModuleBook(pkg) {
     return keys[0];
   }
 
-// Get package name
-function getPackage(uuid) {
-  const pack = foundry.utils.parseUuid(uuid)?.collection?.metadata;
-  switch ( pack?.packageType ) {
-    case "module": return game.modules.get(pack.packageName);
+/**
+ * Get the package (module, system or world) that a compendium belongs to.
+ * @param {object} [metadata] - The compendium's metadata
+ * @returns {object|null}
+ */
+export function getPackageFromMetadata(metadata) {
+  switch ( metadata?.packageType ) {
+    case "module": return game.modules.get(metadata.packageName);
     case "system": return game.system;
     case "world": return game.world;
   }
@@ -21,12 +24,12 @@ function getPackage(uuid) {
 }
 
 /**
- * Prepare the source label.
- * @this {SourceData}
- * @param {string} uuid  Compendium source or document UUID.
+ * Prepare the source label. Look the package up once per compendium with
+ * getPackageFromMetadata and pass it in, rather than parsing every entry's UUID.
+ * @param {object} source - The source data to fill in (book, custom, label, value)
+ * @param {object|null} pkg - The package the document's compendium belongs to
  */
-export function enrichSource(source, uuid) {
-    const pkg = getPackage(uuid);
+export function enrichSource(source, pkg) {
     if ( !source.book ) {
         source.book = getModuleBook(pkg) ?? "";
     }
@@ -39,5 +42,4 @@ export function enrichSource(source, uuid) {
     }
 
     source.value = source.book || (pkg?.title ?? "");
-    source.slug = source.value.slugify({ strict: true });
 }

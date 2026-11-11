@@ -7,6 +7,43 @@
 import AdoptedStyleSheetMixin from "./adopted-stylesheet-mixin.mjs";
 
 /**
+ * Shadow DOM markup shared by all checkboxes, parsed on first use.
+ * @type {HTMLTemplateElement|null}
+ */
+let checkboxTemplate = null;
+
+function getCheckboxTemplate() {
+  if ( checkboxTemplate ) return checkboxTemplate;
+  checkboxTemplate = document.createElement("template");
+  checkboxTemplate.innerHTML = `
+    <div>
+      <div class="checked">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+             style="fill: var(--checkbox-icon-color, #000); width: var(--checkbox-icon-size, 68%);">
+          <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+        </svg>
+      </div>
+      <div class="disabled">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+             style="fill: var(--checkbox-icon-color, #000); width: var(--checkbox-icon-size, 68%);">
+          <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>
+        </svg>
+      </div>
+      <div class="indeterminate">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+             style="fill: var(--checkbox-icon-color, #000); width: var(--checkbox-icon-size, 68%);">
+          <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/>
+        </svg>
+      </div>
+    </div>
+  `;
+  return checkboxTemplate;
+}
+
+/**
  * A custom checkbox implementation with more styling options.
  * @mixes AdoptedStyleSheetMixin
  * @extends {AbstractFormInputElement}
@@ -194,31 +231,8 @@ export class CheckboxElement extends AdoptedStyleSheetMixin(
 
   /** @override */
   _buildElements() {
-    const container = document.createElement("div");
-    container.innerHTML = `
-      <div class="checked">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-             style="fill: var(--checkbox-icon-color, #000); width: var(--checkbox-icon-size, 68%);">
-          <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-          <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
-        </svg>
-      </div>
-      <div class="disabled">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-             style="fill: var(--checkbox-icon-color, #000); width: var(--checkbox-icon-size, 68%);">
-          <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-          <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>
-        </svg>
-      </div>
-      <div class="indeterminate">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-             style="fill: var(--checkbox-icon-color, #000); width: var(--checkbox-icon-size, 68%);">
-          <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-          <path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/>
-        </svg>
-      </div>
-    `;
-    return [container];
+    // Clone a template parsed once, instead of parsing the SVG markup for every checkbox
+    return [getCheckboxTemplate().content.cloneNode(true)];
   }
 
   /* -------------------------------------------- */

@@ -1,3 +1,34 @@
+### 14.1.1
+Bug Fixes:
+- Fixed a server error ("Cannot use 'in' operator to search for 'baseItem'…") that could break opening compendiums, the trait and proficiency settings on character sheets and other modules' compendium lookups while DnD Content Manager was active
+
+Other Changes:
+- Updates now come from Nik's fork. To switch an existing install, reinstall the module with the Manifest URL `https://github.com/nschoenwald/niks-dnd5e-content-manager/releases/latest/download/module.json`. Your settings are kept
+
+### 14.1.0
+Improvements:
+- The Player Content menu is much faster with large compendiums (thousands of monsters, items or spells):
+  - Searching filters the list instantly instead of rebuilding it on every keystroke
+  - Changing the grouping or the Unique/Duplicates filters no longer reloads every compendium
+  - Item images load only when they scroll into view, and rows outside the visible area cost almost nothing to display
+  - Switching between tabs no longer makes Foundry reload compendium indexes from the server
+  - Spell list journals are loaded once per opened menu instead of on every change
+- Clicking many checkboxes quickly sends far fewer updates to the server (and to other connected players)
+
+Bug Fixes:
+- Grouping spells by "Spell Level" no longer breaks the menu; spell level groups are now sorted Cantrip, 1st, 2nd and so on
+- Changing the grouping or filters no longer empties the search box while the search keeps being applied
+
+### 14.0.0
+Bug Fixes:
+- Users with the "Modify Configuration Settings" permission (e.g. Assistant GMs or trusted players) can now save changes to compendium sources, allowed content, filter toggles, player journal options and imported settings. Before, their changes appeared in the menus but were never saved.
+- These users now also get the Compendium sidebar buttons and the item sheet toggle
+- Clicking several checkboxes quickly in the source or content menus no longer loses some of the changes
+- A notification is shown if a setting can't be saved
+
+Other Changes:
+- The version number now follows the Foundry generation (14.x)
+
 ### v1.6.0
 New Features:
 - Compatibility with Foundry VTT v14 (verified on 14.360)

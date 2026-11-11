@@ -11,6 +11,7 @@ import { patchSpotlightOmnisearch } from "./integrations/spotlight.mjs";
 
 import { Version } from "./version-utils.mjs";
 import { DCMIndex } from "./index.mjs";
+import { registerContentIndexFields } from "./apps/content-selector.mjs";
 import { registerInterfaceButtons, registerSystemButtons } from "./ui-integration.mjs";
 import { patchHeromancer } from "./integrations/heromancer.mjs";
 import { addCompendiumOverrideHooks, getOverrideCompendiumOptions, handleOverrideSettingChange } from "./presentation/override-compendium.mjs";
@@ -33,6 +34,9 @@ Hooks.once("init", () => {
 
     //Perform any migration work we need to do
     handleMigrations();
+
+    //Include the fields the Content Selector needs in every compendium index
+    registerContentIndexFields();
 
     //Register settings
     initSettings();

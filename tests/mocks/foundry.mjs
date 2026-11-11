@@ -17,7 +17,14 @@ export function setupFoundryMocks() {
                 settingsStore.set(path, value);
             },
         },
-        user: { role: 4 },
+        user: {
+            role: 4,
+            permissions: {},
+            // Like Foundry: Gamemasters have every permission, others need it granted
+            can(permission) {
+                return this.role >= 4 || this.permissions[permission] === true;
+            },
+        },
     };
 
     globalThis.CONFIG = {
@@ -32,6 +39,9 @@ export function setupFoundryMocks() {
              * Minimal parseUuid mock.
              * Expects UUIDs like "Compendium.module-name.pack-id.item-id"
              */
+            deepClone(value) {
+                return structuredClone(value);
+            },
             parseUuid(uuid) {
                 const parts = uuid.split(".");
                 if (parts[0] === "Compendium" && parts.length >= 4) {

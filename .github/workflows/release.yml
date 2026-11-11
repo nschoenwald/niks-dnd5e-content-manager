@@ -1,0 +1,63 @@
+name: Release Module
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Extract Tag Version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Check tag matches module.json version
+        run: |
+          VERSION="${{ steps.get_version.outputs.VERSION }}"
+          VER_NUM="${VERSION#v}"
+          MANIFEST_VER="$(jq -r '.version' module.json)"
+          if [ "$VER_NUM" != "$MANIFEST_VER" ]; then
+            echo "::error::Release tag ($VER_NUM) does not match module.json version ($MANIFEST_VER)."
+            exit 1
+          fi
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate JSON files
+        run: jq empty module.json
+
+      # The journal compendium is stored as YAML in packs/_source; compile it to LevelDB for the release.
+      - name: Build compendium packs
+        run: |
+          npm ci
+          npm run build:db
+
+      - name: Update module.json download URL
+        run: |
+          VERSION="${{ steps.get_version.outputs.VERSION }}"
+          jq --arg url "https://github.com/${{ github.repository }}/releases/download/${VERSION}/module.zip" \
+             '.download = $url' module.json > tmp.json && mv tmp.json module.json
+
+      - name: Create Module Archive
+        run: |
+          zip -r module.zip module.json scripts styles templates packs README.md LICENSE CHANGELOG.md \
+            -x 'packs/_source/*' 'packs/*/LOCK' 'scripts/packaging/*'
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            module.zip
+            module.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

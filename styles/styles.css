@@ -310,6 +310,17 @@
     display: flex;
     flex-direction: row;
   }
+
+  /* Skip layout and painting of rows outside the visible area (large lists) */
+  .dcm .content-selector li.compendium-list-row:not(.all):not(.header-row) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 45px;
+  }
+
+  /* Rows and groups hidden by the search */
+  .dcm .content-selector [hidden] {
+    display: none !important;
+  }
   
   /* Row Components
      ----------------- */

@@ -37,11 +37,11 @@
             </li>
 
             {{#each entries}}
-                <li class="compendium-list-row">
-                    
+                <li class="compendium-list-row" data-name="{{ searchName }}">
+
                     <a class="entity-link" draggable="true" data-entity="Item" data-action="openItem", 
                         data-id="{{ uuid }}">
-                        <img class="compendium-icon" src="{{ img }}" width=20px height=20px>
+                        <img class="compendium-icon" src="{{ img }}" width="20" height="20" loading="lazy" decoding="async" alt="">
                     </a>
 
                     <label class="checkbox compendium-checkbox">
@@ -61,8 +61,6 @@
                                     <span class="title">{{ label }}</span>
                                     <span class="metadata">{{ metadata }}</span>
                                 </div>
-                                <!-- <span class="title">{{ label }}</span>
-                                <span class="metadata">{{ metadata }}</span> -->
                             </div>
                             <div class="right-text">
                                 <span class="source">{{ sourceName }}</span>
@@ -99,6 +97,9 @@
             {{#each entries}}
                 {{> ".packs" this}}
             {{/each}}
+            <div class="filter note roboto-condensed-upper no-search-results" hidden>
+                <p>No results found</p>
+            </div>
         {{else}}
             {{#if numSources}}
                 <div class="filter note roboto-condensed-upper">

@@ -4,3 +4,7 @@ node_modules/
 
 packs/*
 !packs/_source/
+CHANGELOG_internal.md
+.DS_Store
+dist/
+CLAUDE.md

@@ -12,7 +12,7 @@ import { getOverrideCompendium } from "./override-compendium.mjs"
 async function getItemsFromPack(type, pack) {
     if (type === 'feat') {
         return await pack.getIndex(
-            {fields: new Set(["uuid", "system.type"])}
+            {fields: new Set(["uuid", "system.type.value"])}
         )
         .then(
             index =>  index.filter(d => d.system.type?.value === type)

@@ -3,7 +3,7 @@ import { ContentSelector } from "./apps/content-selector.mjs";
 import { PlayerHandbookMenu } from "./apps/player-handbook.mjs";
 import { addContent, removeContent } from "./content-management.mjs";
 import { log } from "./lib.mjs";
-import { getSetting, SETTINGS } from "./settings.mjs";
+import { canModifySettings, getSetting, SETTINGS } from "./settings.mjs";
 
 //Code for buttons which are injected into headers of Core DND5e apps
 
@@ -95,7 +95,7 @@ function injectCompendiumButtons(html) {
 export function registerInterfaceButtons() {
     if (getSetting(SETTINGS.injectCompendiumButtons)) {
         Hooks.on("renderCompendiumDirectory", (app, html, data) => {
-            if (game.user.role == 4) {
+            if (canModifySettings()) {
                 log("Adding compendium sidebar buttons")
                 injectCompendiumButtons(html)
             }
@@ -110,8 +110,8 @@ export function registerInterfaceButtons() {
  */
 export function registerSystemButtons() {
 
-    //If DM, don't do anything
-    if (game.user.role != 4) {
+    //Only users who can change the module's settings get the item toggle
+    if (!canModifySettings()) {
         return
     }
 
