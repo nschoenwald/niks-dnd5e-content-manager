@@ -1,5 +1,5 @@
 <section class="operation-dialog">
-    <p>Select which item types to enable filtering</p>
+    <p>{{ localize "DCM.EnableMenu.Hint" }}</p>
     <menu class="pack-list unlist base">
         {{#each itemtypes}}
         <li class="enable-options">
@@ -9,7 +9,7 @@
                 ></dcm-checkbox>
                 <div class="checkbox-label">
                     <dnd5e-icon class="compendium-icon" src="{{ icon }}"></dnd5e-icon>
-                    <span">{{label}}</span>
+                    <span>{{label}}</span>
                 </div>
             </label>
         </li>

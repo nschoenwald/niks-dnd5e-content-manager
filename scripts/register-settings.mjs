@@ -72,9 +72,9 @@ export function initSettings() {
 
     game.settings.registerMenu(MODULE_NAME, "sourceMenu", 
         {
-            name: "Compendium Sources",
-            label: "Configure Sources",
-            hint: "Choose the compendia which will be used as sources for character options",
+            name: "DCM.Settings.SourceMenu.Name",
+            label: "DCM.Settings.SourceMenu.Label",
+            hint: "DCM.Settings.SourceMenu.Hint",
             scope: "world",
             config: true,
             type: SourceSelector,
@@ -85,9 +85,9 @@ export function initSettings() {
 
     game.settings.registerMenu(MODULE_NAME, "contentMenu",
         {
-            name: "Player Content",
-            label: "Configure Content",
-            hint: "Choose which items from your selected compendia will be available for players",
+            name: "DCM.Settings.ContentMenu.Name",
+            label: "DCM.Settings.ContentMenu.Label",
+            hint: "DCM.Settings.ContentMenu.Hint",
             scope: "world",
             config: true,
             type: ContentSelector,
@@ -98,9 +98,9 @@ export function initSettings() {
 
     game.settings.registerMenu(MODULE_NAME, "handbookMenu",
         {
-            name: "Player Option Journals",
-            label: "Create Player Option Journals",
-            hint: "Create a set of Journals which contain the selected player options",
+            name: "DCM.Settings.HandbookMenu.Name",
+            label: "DCM.Settings.HandbookMenu.Label",
+            hint: "DCM.Settings.HandbookMenu.Hint",
             scope: "world",
             config: true,
             restricted: true,
@@ -111,9 +111,9 @@ export function initSettings() {
 
     game.settings.registerMenu(MODULE_NAME, "clear", 
         {
-            name: "Clear Settings",
-            hint: "Erase all settings (for sources and allowed content)",
-            label: "Clear Settings",
+            name: "DCM.Settings.ClearMenu.Name",
+            hint: "DCM.Settings.ClearMenu.Hint",
+            label: "DCM.Settings.ClearMenu.Label",
             scope: "world",
             config: true,
             type: ClearSettings,
@@ -123,9 +123,9 @@ export function initSettings() {
     )
 
     game.settings.registerMenu(MODULE_NAME, "exportConfig", {
-        name: "Export Settings",
-        label: "Download File",
-        hint: "Download current settings as a JSON file",
+        name: "DCM.Settings.ExportMenu.Name",
+        label: "DCM.Settings.ExportMenu.Label",
+        hint: "DCM.Settings.ExportMenu.Hint",
         scope: "world",
         config: true,
         type: ExportDialog,
@@ -134,9 +134,9 @@ export function initSettings() {
     })
 
     game.settings.registerMenu(MODULE_NAME, 'importConfig', {
-        name: 'Load Settings',
-        label: "Upload File",
-        hint: "Upload a JSON file with existing settings",
+        name: "DCM.Settings.ImportMenu.Name",
+        label: "DCM.Settings.ImportMenu.Label",
+        hint: "DCM.Settings.ImportMenu.Hint",
         config: true,
         scope: "world",
         type: ImportDialog,
@@ -146,8 +146,8 @@ export function initSettings() {
 
       game.settings.register(MODULE_NAME, SETTINGS.injectCompendiumButtons, 
         {
-            name: "Add Compendium Sidebar Buttons",
-            hint: "Add buttons for configuring options and creating the player journal to the compendium tab",
+            name: "DCM.Settings.InjectCompendiumButtons.Name",
+            hint: "DCM.Settings.InjectCompendiumButtons.Hint",
             config: true,
             scope: "player",
             type: Boolean,
@@ -160,8 +160,8 @@ export function initSettings() {
       
       game.settings.register(MODULE_NAME, SETTINGS.injectItemButton, 
         {
-            name: "Add Item Toggle",
-            hint: "Adds toggle to item sheets to directly enable/disable without opening the configuration menu",
+            name: "DCM.Settings.InjectItemButton.Name",
+            hint: "DCM.Settings.InjectItemButton.Hint",
             config: true,
             scope: "player",
             type: Boolean,
@@ -175,8 +175,8 @@ export function initSettings() {
       if (game.modules.get("quick-insert")) {
         game.settings.register(MODULE_NAME, SETTINGS.filterQuickInsert, 
             {
-                name: "Filter Quick Insert Results",
-                hint: "Filter results returned by Quick Insert (if installed)",
+                name: "DCM.Settings.FilterQuickInsert.Name",
+                hint: "DCM.Settings.FilterQuickInsert.Hint",
                 scope: "world",
                 config: true,
                 type: Boolean,
@@ -190,8 +190,8 @@ export function initSettings() {
     if (game.modules.get("spotlight-omnisearch")) {
         game.settings.register(MODULE_NAME, SETTINGS.filterSpotlight, 
             {
-                name: "Filter Spotlight Omnisearch Results",
-                hint: "Filter results returned by Spotlight Omnisearch (if installed)",
+                name: "DCM.Settings.FilterSpotlight.Name",
+                hint: "DCM.Settings.FilterSpotlight.Hint",
                 scope: "world",
                 config: true,
                 type: Boolean,
@@ -205,8 +205,8 @@ export function initSettings() {
     if (game.modules.get("hero-mancer")) {
         game.settings.register(MODULE_NAME, SETTINGS.filterHeromancer, 
             {
-                name: "Filter Hero Mancer Options",
-                hint: "Filter player options shown by Hero-Mancer (if installed)",
+                name: "DCM.Settings.FilterHeromancer.Name",
+                hint: "DCM.Settings.FilterHeromancer.Hint",
                 scope: "world",
                 config: true,
                 type: Boolean,
@@ -219,7 +219,7 @@ export function initSettings() {
 
     game.settings.register(MODULE_NAME, SETTINGS.playerHandbookOptions, 
         {
-            name: "Player Handbook Options",
+            name: "DCM.Settings.PlayerHandbookOptions.Name",
             config: false,
             default: {
                 class: true,
@@ -229,7 +229,7 @@ export function initSettings() {
                 spells: true,
                 existingPages: true,
                 overridePages: true,
-                folderTitle: "Player Handbook",
+                folderTitle: "",
                 styleOption: null
             },
             restricted: true,
@@ -245,8 +245,8 @@ export function registerCompendiumOverrideSetting() {
 
     game.settings.register(MODULE_NAME, SETTINGS.overrideCompendium,
         {
-            name: "Handbook Override Compendium",
-            hint: "Compendium to search for custom Class, Subclass, Species, and Background Journal Pages. If the desired compendium isn't present, reload Foundry",
+            name: "DCM.Settings.OverrideCompendium.Name",
+            hint: "DCM.Settings.OverrideCompendium.Hint",
             config: true,
             scope: "world",
             default: "none",

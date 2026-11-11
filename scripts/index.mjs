@@ -1,6 +1,6 @@
 import { getContent } from "./content-management.mjs";
 import { log, warn } from "./lib.mjs";
-import { getSetting, SETTINGS } from "./settings.mjs";
+import { getSetting, SETTINGS, MODULE_LABEL } from "./settings.mjs";
 import { getSources } from "./source-management.mjs";
 
 
@@ -36,7 +36,7 @@ export class DCMIndex extends Object {
             }
             if (SETTINGS[s].type !== "JournalEntry" && getSetting(SETTINGS[s].content).length === 0) {
                 warn(`${SETTINGS[s].label} filtering is enabled but no content is selected — filtering for this type is disabled`)
-                ui.notifications.warn(`DnD Content Manager: ${SETTINGS[s].label} filtering is enabled but no content is selected — filtering for this type is disabled`)
+                ui.notifications.warn(game.i18n.format("DCM.Notify.NoContent", { module: MODULE_LABEL, type: SETTINGS[s].label }))
                 continue
             }
             index[s] = {items: new Set(getContent(s)), sources: new Set(getSources(s))}

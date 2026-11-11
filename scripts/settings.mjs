@@ -28,8 +28,8 @@ export const SETTINGS = {
      * Configuration of the 'item' type management
      */
     items : {
-        label: "Items",
-        metadataLabel: "Type",
+        label: "DCM.Type.Items",
+        metadataLabel: "DCM.Metadata.Type",
         icon: "systems/dnd5e/icons/svg/items/container.svg",
         sources: "itemSources",
         content: "items",
@@ -39,17 +39,17 @@ export const SETTINGS = {
         subtype: "items",
         item_subtypes: ["container", "consumable", "equipment", "loot", "tattoo", "tool", "weapon"],
         groups: [
-            {groupLabel: "Module", valuePath: "module", itemLabelPath: "moduleName"},
-            {groupLabel: "Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
-            {groupLabel: "Source", valuePath: "source", itemLabelPath: "sourceName"},
-            {groupLabel: "Type", valuePath: "metadata"},
-            {groupLabel: "Name", valuePath: "label"}
+            {groupLabel: "DCM.Group.Module", valuePath: "module", itemLabelPath: "moduleName"},
+            {groupLabel: "DCM.Group.Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
+            {groupLabel: "DCM.Group.Source", valuePath: "source", itemLabelPath: "sourceName"},
+            {groupLabel: "DCM.Group.Type", valuePath: "metadata"},
+            {groupLabel: "DCM.Group.Name", valuePath: "label"}
         ]
     },
 
     spell : {
-        label: "Spells",
-        metadataLabel: "Level | School",
+        label: "DCM.Type.Spells",
+        metadataLabel: "DCM.Metadata.LevelSchool",
         icon: "systems/dnd5e/icons/svg/items/spell.svg",
         sources: "spellSources",
         content: "spells",
@@ -58,18 +58,18 @@ export const SETTINGS = {
         type: "Item",
         subtype: "spell",
         groups: [
-            {groupLabel: "Module", valuePath: "module", itemLabelPath: "moduleName"},
-            {groupLabel: "Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
-            {groupLabel: "Source", valuePath: "source", itemLabelPath: "sourceName"},
-            {groupLabel: "School", valuePath: "school"},
-            {groupLabel: "Spell Level", valuePath: "levelInt", itemLabelPath: "level"},
-            {groupLabel: "Name", valuePath: "label"}
+            {groupLabel: "DCM.Group.Module", valuePath: "module", itemLabelPath: "moduleName"},
+            {groupLabel: "DCM.Group.Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
+            {groupLabel: "DCM.Group.Source", valuePath: "source", itemLabelPath: "sourceName"},
+            {groupLabel: "DCM.Group.School", valuePath: "school"},
+            {groupLabel: "DCM.Group.SpellLevel", valuePath: "levelInt", itemLabelPath: "level"},
+            {groupLabel: "DCM.Group.Name", valuePath: "label"}
         ]
     },
 
     spelllist: {
-        label: "Spell Lists",
-        metadataLabel: "Class",
+        label: "DCM.Type.SpellLists",
+        metadataLabel: "DCM.Metadata.Class",
         icon: "systems/dnd5e/icons/svg/item-grant.svg",
         sources: "spellListSources",
         content: "spellLists",
@@ -78,16 +78,16 @@ export const SETTINGS = {
         type: "JournalEntry",
         subtype: "spells",
         groups: [
-            {groupLabel: "Module", valuePath: "module", itemLabelPath: "moduleName"},
-            {groupLabel: "Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
-            {groupLabel: "Journal", valuePath: "source", itemLabelPath: "sourceName"},
-            {groupLabel: "Class", valuePath: "metadata"},
-            {groupLabel: "Name", valuePath: "label"}
+            {groupLabel: "DCM.Group.Module", valuePath: "module", itemLabelPath: "moduleName"},
+            {groupLabel: "DCM.Group.Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
+            {groupLabel: "DCM.Group.Journal", valuePath: "source", itemLabelPath: "sourceName"},
+            {groupLabel: "DCM.Group.Class", valuePath: "metadata"},
+            {groupLabel: "DCM.Group.Name", valuePath: "label"}
         ]
     },
 
     class: {
-        label: "Classes",
+        label: "DCM.Type.Classes",
         metadataLabel: "",
         icon: "systems/dnd5e/icons/svg/items/class.svg",
         sources: "classSources",
@@ -97,16 +97,16 @@ export const SETTINGS = {
         type: "Item",
         subtype: "class",
         groups: [
-            {groupLabel: "Module", valuePath: "module", itemLabelPath: "moduleName"},
-            {groupLabel: "Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
-            {groupLabel: "Source", valuePath: "source", itemLabelPath: "sourceName"},
-            {groupLabel: "Name", valuePath: "label"}
+            {groupLabel: "DCM.Group.Module", valuePath: "module", itemLabelPath: "moduleName"},
+            {groupLabel: "DCM.Group.Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
+            {groupLabel: "DCM.Group.Source", valuePath: "source", itemLabelPath: "sourceName"},
+            {groupLabel: "DCM.Group.Name", valuePath: "label"}
         ]
     },
 
     subclass: {
-        label: "Subclasses",
-        metadataLabel: "Class",
+        label: "DCM.Type.Subclasses",
+        metadataLabel: "DCM.Metadata.Class",
         icon: "systems/dnd5e/icons/svg/items/subclass.svg",
         sources: "subclassSources",
         content: "subclasses",
@@ -115,17 +115,17 @@ export const SETTINGS = {
         type: "Item",
         subtype: "subclass",
         groups: [
-            {groupLabel: "Module", valuePath: "module", itemLabelPath: "moduleName"},
-            {groupLabel: "Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
-            {groupLabel: "Source", valuePath: "source", itemLabelPath: "sourceName"},
-            {groupLabel: "Class", valuePath: "metadata"},
-            {groupLabel: "Name", valuePath: "label"}
+            {groupLabel: "DCM.Group.Module", valuePath: "module", itemLabelPath: "moduleName"},
+            {groupLabel: "DCM.Group.Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
+            {groupLabel: "DCM.Group.Source", valuePath: "source", itemLabelPath: "sourceName"},
+            {groupLabel: "DCM.Group.Class", valuePath: "metadata"},
+            {groupLabel: "DCM.Group.Name", valuePath: "label"}
         ]
     },
 
     feat: {
-        label: "Feats",
-        metadataLabel: "Feat Type",
+        label: "DCM.Type.Feats",
+        metadataLabel: "DCM.Metadata.FeatType",
         icon: "systems/dnd5e/icons/svg/items/feature.svg",
         sources: "featSources",
         content: "feats",
@@ -134,16 +134,16 @@ export const SETTINGS = {
         type: "Item",
         subtype: "feat",
         groups: [
-            {groupLabel: "Module", valuePath: "module", itemLabelPath: "moduleName"},
-            {groupLabel: "Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
-            {groupLabel: "Source", valuePath: "source", itemLabelPath: "sourceName"},
-            {groupLabel: "Feat Type", valuePath: "metadata"},
-            {groupLabel: "Name", valuePath: "label"}
+            {groupLabel: "DCM.Group.Module", valuePath: "module", itemLabelPath: "moduleName"},
+            {groupLabel: "DCM.Group.Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
+            {groupLabel: "DCM.Group.Source", valuePath: "source", itemLabelPath: "sourceName"},
+            {groupLabel: "DCM.Group.FeatType", valuePath: "metadata"},
+            {groupLabel: "DCM.Group.Name", valuePath: "label"}
         ]
     },
 
     race: {
-        label: "Species",
+        label: "DCM.Type.Species",
         metadataLabel: "",
         icon: "systems/dnd5e/icons/svg/items/race.svg",
         sources: "speciesSources",
@@ -153,15 +153,15 @@ export const SETTINGS = {
         type: "Item",
         subtype: "race",
         groups: [
-            {groupLabel: "Module", valuePath: "module", itemLabelPath: "moduleName"},
-            {groupLabel: "Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
-            {groupLabel: "Source", valuePath: "source", itemLabelPath: "sourceName"},
-            {groupLabel: "Name", valuePath: "label"}
+            {groupLabel: "DCM.Group.Module", valuePath: "module", itemLabelPath: "moduleName"},
+            {groupLabel: "DCM.Group.Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
+            {groupLabel: "DCM.Group.Source", valuePath: "source", itemLabelPath: "sourceName"},
+            {groupLabel: "DCM.Group.Name", valuePath: "label"}
         ]
     },
 
     background: {
-        label: "Backgrounds",
+        label: "DCM.Type.Backgrounds",
         metadataLabel: "",
         icon: "systems/dnd5e/icons/svg/items/background.svg",
         sources: "backgroundSources",
@@ -171,15 +171,15 @@ export const SETTINGS = {
         type: "Item",
         subtype: "background",
         groups: [
-            {groupLabel: "Module", valuePath: "module", itemLabelPath: "moduleName"},
-            {groupLabel: "Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
-            {groupLabel: "Source", valuePath: "source", itemLabelPath: "sourceName"},
-            {groupLabel: "Name", valuePath: "label"}
+            {groupLabel: "DCM.Group.Module", valuePath: "module", itemLabelPath: "moduleName"},
+            {groupLabel: "DCM.Group.Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
+            {groupLabel: "DCM.Group.Source", valuePath: "source", itemLabelPath: "sourceName"},
+            {groupLabel: "DCM.Group.Name", valuePath: "label"}
         ]
     },
 
     monster: {
-        label: "Monsters",
+        label: "DCM.Type.Monsters",
         metadataLabel: "",
         icon: "systems/dnd5e/icons/svg/monster.svg",
         sources: "monsterSources",
@@ -189,11 +189,11 @@ export const SETTINGS = {
         type: "Actor",
         subtype: "npc",
         groups: [
-            {groupLabel: "Module", valuePath: "module", itemLabelPath: "moduleName"},
-            {groupLabel: "Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
-            {groupLabel: "Source", valuePath: "source", itemLabelPath: "sourceName"},
-            {groupLabel: "Type", valuePath: "typeName"},
-            {groupLabel: "Name", valuePath: "label"}
+            {groupLabel: "DCM.Group.Module", valuePath: "module", itemLabelPath: "moduleName"},
+            {groupLabel: "DCM.Group.Compendium", valuePath: "compendium", itemLabelPath: "compendiumName"},
+            {groupLabel: "DCM.Group.Source", valuePath: "source", itemLabelPath: "sourceName"},
+            {groupLabel: "DCM.Group.Type", valuePath: "typeName"},
+            {groupLabel: "DCM.Group.Name", valuePath: "label"}
         ]
     },
 
@@ -205,6 +205,20 @@ export const SETTINGS = {
     injectItemButton: "injectItemButton",
     playerHandbookOptions: "playerHandbookOptions",
     overrideCompendium: "overrideCompendium"
+}
+
+/**
+ * Replaces the i18n keys in SETTINGS (type labels, metadata column labels, grouping labels) with their
+ * translations. Called once from the i18nInit hook; everything that displays these labels runs later.
+ */
+export function localizeSettingLabels() {
+    const loc = key => (typeof key === "string" && key.startsWith("DCM.")) ? game.i18n.localize(key) : key;
+    for (const type of SETTINGS.itemtypes) {
+        const config = SETTINGS[type];
+        config.label = loc(config.label);
+        config.metadataLabel = loc(config.metadataLabel);
+        for (const group of config.groups ?? []) group.groupLabel = loc(group.groupLabel);
+    }
 }
 
 /**
@@ -313,7 +327,7 @@ function trackWrite(path, state, result) {
     state.inFlight = result
         .then(() => {}, err => {
             console.error(`${MODULE_LABEL} | Failed to save setting "${path}"`, err);
-            ui.notifications?.error(`${MODULE_LABEL}: Failed to save a setting. See the console (F12) for details.`);
+            ui.notifications?.error(game.i18n.format("DCM.Notify.SaveFailed", { module: MODULE_LABEL }));
         })
         .then(() => {
             // A write queued meanwhile registered on inFlight, so state.next is already set here

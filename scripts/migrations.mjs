@@ -136,8 +136,7 @@ export function migrateLegacyClientSettings() {
  */
 export async function migrateLegacyWorldSettings() {
     if (game.modules.get(LEGACY_MODULE_NAME)?.active) {
-        ui.notifications.warn(`${MODULE_LABEL}: The original "DnD Content Manager" module is also active in this world. `
-            + `Disable it and keep only "Nik's DnD Content Manager".`, { permanent: true });
+        ui.notifications.warn(game.i18n.format("DCM.Migration.BothActive", { module: MODULE_LABEL }), { permanent: true });
     }
     if (!game.users.activeGM?.isSelf) return false;
 
@@ -155,12 +154,11 @@ export async function migrateLegacyWorldSettings() {
         await Setting.implementation.createDocuments(toCreate);
     } catch (e) {
         console.error(`${MODULE_LABEL} | Could not migrate settings from ${LEGACY_MODULE_NAME}`, e);
-        ui.notifications.error(`${MODULE_LABEL}: Could not copy your settings from the previous module version. `
-            + "See the console (F12) for details.", { permanent: true });
+        ui.notifications.error(game.i18n.format("DCM.Migration.Failed", { module: MODULE_LABEL }), { permanent: true });
         return false;
     }
     log(`Migration: copied ${toCreate.length} settings from ${LEGACY_MODULE_NAME}`);
-    ui.notifications.info(`${MODULE_LABEL}: Your settings were copied from the previous module version. Reloading…`);
+    ui.notifications.info(game.i18n.format("DCM.Migration.Done", { module: MODULE_LABEL }));
     foundry.utils.debouncedReload();
     return true;
 }

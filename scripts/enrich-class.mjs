@@ -11,5 +11,5 @@ export function getClassDetailsFromIdent(identifier) {
             sources: []
         }
     }
-    return {name: "Unknown", img: "icons/svg/cowled.svg", identifier: identifier, source: []}
+    return {name: game.i18n.localize("DCM.Common.Unknown"), img: "icons/svg/cowled.svg", identifier: identifier, source: []}
 }

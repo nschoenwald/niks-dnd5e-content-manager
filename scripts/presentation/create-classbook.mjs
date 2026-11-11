@@ -106,7 +106,7 @@ function makeCombinedSpellList(className, classIdentifier) {
 
     // Create new spell list page data
     return makeSpellPage(
-        `${className} Spell List`,
+        game.i18n.format("DCM.Handbook.ClassSpellList", { class: className }),
         filteredSpells,
         2
     )
@@ -204,7 +204,7 @@ export async function createClassbook(folder, useExistingPages, useOverridePages
     // Initialize class map with "unknown" category for orphaned subclasses
     const classMap = new Map();
     classMap.set('unknown', {
-        page: await makePage("Unknown Class", "<p>These subclasses are for an unknown class</p>"),
+        page: await makePage(game.i18n.localize("DCM.Handbook.UnknownClass"), `<p>${game.i18n.localize("DCM.Handbook.UnknownClassText")}</p>`),
         subclassPages: [],
     });
     
@@ -225,15 +225,13 @@ export async function createClassbook(folder, useExistingPages, useOverridePages
         
         // Log a warning if no matching class found
         if (!classMap.has(cls.system.classIdentifier)) {
-            const classTarget = dnd5e.registry.classes.get("bard")
+            const classTarget = dnd5e.registry.classes.get(cls.system.classIdentifier)
             if (classTarget) {
-                ui.notifications.warn(
-                    `Subclass ${cls.name} is selected but parent class ${classTarget.name} is filtered by DND Content Manager`
-                );
+                ui.notifications.warn(game.i18n.format("DCM.Handbook.SubclassParentFiltered",
+                    { subclass: cls.name, class: classTarget.name }));
             } else {
-                ui.notifications.warn(
-                    `Subclass ${cls.name} is selected but parent class not found. Parent class Id is ${cls.system.classIdentifier}`
-                )
+                ui.notifications.warn(game.i18n.format("DCM.Handbook.SubclassParentMissing",
+                    { subclass: cls.name, id: cls.system.classIdentifier }));
             }
         }
 
@@ -286,7 +284,7 @@ export async function createClassbook(folder, useExistingPages, useOverridePages
     }
     
     // Create and populate new journal
-    const journal = await makeJournal("Classes", sheet, "class", folder);
+    const journal = await makeJournal(SETTINGS.class.label, sheet, "class", folder);
     await addPages(journal, allPages);
     
     return journal;

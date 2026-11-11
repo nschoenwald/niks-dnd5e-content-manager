@@ -616,3 +616,39 @@
     margin-left: 0em;
     font-weight: bold;
   }
+
+  /* GM View toggle in the D&D 5e compendium browser (GMs only). Gold on dark, a darker gold on light.
+     The window's own theme class comes last so it wins over the interface theme on body. */
+  .application:has(.dcm-gm-view-toggle),
+  .theme-dark .application:has(.dcm-gm-view-toggle) {
+    --dcm-gm-view-accent: var(--dnd5e-color-gold, #9f9275);
+  }
+
+  .theme-light .application:has(.dcm-gm-view-toggle) {
+    --dcm-gm-view-accent: #6b5a2e;
+  }
+
+  .application.theme-dark:has(.dcm-gm-view-toggle) {
+    --dcm-gm-view-accent: var(--dnd5e-color-gold, #9f9275);
+  }
+
+  .application.theme-light:has(.dcm-gm-view-toggle) {
+    --dcm-gm-view-accent: #6b5a2e;
+  }
+
+  .application .window-header .dcm-gm-view-toggle.active {
+    color: var(--dcm-gm-view-accent);
+    text-shadow: 0 0 6px var(--dcm-gm-view-accent);
+  }
+
+  .application.dcm-gm-view-active .window-header {
+    box-shadow: inset 0 -2px 0 var(--dcm-gm-view-accent);
+  }
+
+  .application .dcm-gm-view-note {
+    margin: 0 0 0.5rem;
+  }
+
+  .application .dcm-gm-view-note i {
+    color: var(--dcm-gm-view-accent);
+  }

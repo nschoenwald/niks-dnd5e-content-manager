@@ -12,8 +12,8 @@
                                 category="{{ category }}"
                                 data-action="selectAll"
                                 {{#if indeterminate}}indeterminate{{/if}}></dcm-checkbox>
-                <span class="title select-all">{{ localize "Select All" }}</span>
-                <span class="title selected-count">{{ selected }}/{{ entries.length }} Selected</span>
+                <span class="title select-all">{{ localize "DCM.Common.SelectAll" }}</span>
+                <span class="title selected-count">{{ localize "DCM.ContentSelector.SelectedCount" selected=selected total=entries.length }}</span>
                 <button class="toggle-content-button"
                     data-action="togglePackContent">
                     <i class="fas fa-arrow-up"></i>
@@ -27,11 +27,11 @@
             <li class="compendium-list-row header-row">
                 <div class="compendium-row-label header-labels">
                     <div class="left-text">
-                        <span class="title">Item</span>
+                        <span class="title">{{ localize "DCM.ContentSelector.Column.Item" }}</span>
                     </div>
                     <div class="right-text">
-                        <span class="source">Source</span>
-                        <span class="module">Module</span>
+                        <span class="source">{{ localize "DCM.ContentSelector.Column.Source" }}</span>
+                        <span class="module">{{ localize "DCM.ContentSelector.Column.Module" }}</span>
                     </div>
                 </div>
             </li>
@@ -81,13 +81,12 @@
     {{#if isSpelllist}}
         {{#if isV3}}
             <div class="filter note roboto-condensed-upper">
-                <p>You need to update to D&D5E v4 or higher to manage spell lists</p>
+                <p>{{ localize "DCM.ContentSelector.NeedV4" }}</p>
             </div>
         {{else}}
             <div class="filter note roboto-condensed-upper">
-                <p>Work In Progress</p>
-                <p>Spell lists are only updated when the game is reloaded. In addition, spell lists loaded by modules
-                cannot be unloaded.</p>
+                <p>{{ localize "DCM.Common.WorkInProgress" }}</p>
+                <p>{{ localize "DCM.ContentSelector.SpellListNote" }}</p>
             </div>
         {{/if}}
     {{/if}}
@@ -98,22 +97,22 @@
                 {{> ".packs" this}}
             {{/each}}
             <div class="filter note roboto-condensed-upper no-search-results" hidden>
-                <p>No results found</p>
+                <p>{{ localize "DCM.Common.NoResults" }}</p>
             </div>
         {{else}}
             {{#if numSources}}
                 <div class="filter note roboto-condensed-upper">
-                    <p>No results found</p>
+                    <p>{{ localize "DCM.Common.NoResults" }}</p>
                 </div>
             {{else}}
                 <div class="filter note roboto-condensed-upper">
-                    <p>No compendium sources selected.</p>
+                    <p>{{ localize "DCM.ContentSelector.NoSources" }}</p>
                 </div>
             {{/if}} 
         {{/if}}
     {{else}}
         <div class="filter note roboto-condensed-upper">
-            <p>Managing {{type}} disabled</p>
+            <p>{{ localize "DCM.ContentSelector.ManagementDisabled" type=type }}</p>
         </div>
     {{/if}}
 </section>

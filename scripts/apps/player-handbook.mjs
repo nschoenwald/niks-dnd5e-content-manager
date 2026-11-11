@@ -14,7 +14,7 @@ export class PlayerHandbookMenu extends HandlebarsApplicationMixin(ApplicationV2
     static DEFAULT_OPTIONS = {
             tag: "form",
             window: {
-                title: "Create Player Handbook",
+                title: "DCM.Handbook.Title",
                 icon: null,
                 resizeable: true
             },
@@ -38,12 +38,11 @@ export class PlayerHandbookMenu extends HandlebarsApplicationMixin(ApplicationV2
      * @returns {HTMLButtonElement} The created button element
      */
     static createSidebarButton() {
-        const button = document.createElement("button", {
-            caption: "Create Player Option Journals"
-        });
+        const button = document.createElement("button");
         
         button.classList.add("player-handbook-button");
-        button.setAttribute("data-tooltip", "Create Player Option Journals");
+        button.setAttribute("data-tooltip", game.i18n.localize("DCM.Handbook.SidebarTooltip"));
+        button.setAttribute("aria-label", game.i18n.localize("DCM.Handbook.SidebarTooltip"));
         button.type = "button";
         button.innerHTML = '<i class="fas fa-book-sparkles" inert></i>';
         
@@ -100,19 +99,21 @@ export class PlayerHandbookMenu extends HandlebarsApplicationMixin(ApplicationV2
         context.buttons = [{
             type: "submit",
             icon: "fas fa-write",
-            label: "Create Handbook"
+            label: "DCM.Handbook.Create"
         }];
 
         // Set default options for handbook content
         context.options = getSetting(SETTINGS.playerHandbookOptions)
         context.noOverrideSet = getSetting(SETTINGS.overrideCompendium) === "none"
+        context.defaultFolderTitle = game.i18n.localize("DCM.Handbook.DefaultFolderTitle")
+        context.speciesLabel = SETTINGS.race.label
 
         // Prepare journal style options
         context.styleOptions = [
-            { value: null, label: "Default Style", selected: true },
+            { value: null, label: game.i18n.localize("DCM.Handbook.DefaultStyle"), selected: true },
             ...Object.keys(CONFIG.JournalEntry.sheetClasses.base).map(k => ({
                 value: k,
-                label: CONFIG.JournalEntry.sheetClasses.base[k].label,
+                label: game.i18n.localize(CONFIG.JournalEntry.sheetClasses.base[k].label),
                 selected: k === context.options.styleOption
             }))
         ];

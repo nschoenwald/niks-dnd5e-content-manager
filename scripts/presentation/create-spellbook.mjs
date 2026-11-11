@@ -19,7 +19,7 @@ export async function createSpellbook(folder, sheet) {
         : await getAllItems(SETTINGS.spell.subtype)
     )
 
-    const spellPage = makeSpellPage("Spell List", spells, 1)
+    const spellPage = makeSpellPage(game.i18n.localize("DCM.Handbook.SpellList"), spells, 1)
 
     // Create the main journal
     const journal = await makeJournal(

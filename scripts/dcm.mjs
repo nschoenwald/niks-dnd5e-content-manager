@@ -1,5 +1,5 @@
 
-import { MODULE_NAME, setSetting, SETTINGS } from "./settings.mjs";
+import { MODULE_NAME, setSetting, SETTINGS, localizeSettingLabels } from "./settings.mjs";
 import { log } from "./lib.mjs";
 import { initSettings, initVersionSetting, registerCompendiumOverrideSetting } from "./register-settings.mjs"
 import { registerSpellLists } from "./spell-lists.mjs";
@@ -49,13 +49,18 @@ Hooks.once("init", () => {
 
     //Patch terminology for D&D5e v3
     if (!CONFIG.dndContentManager.modernRules) {
-        SETTINGS.race.label = "Races"
+        SETTINGS.race.label = "DCM.Type.Races"
     }
 
     log("Finished initialisation")
 })
 
 
+
+Hooks.once("i18nInit", () => {
+    //Translate the content type, column and grouping labels once the language files are loaded
+    localizeSettingLabels();
+})
 
 Hooks.once("ready", async () => {
 

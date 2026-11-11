@@ -10,7 +10,7 @@
                                 category="{{ itemType }}"
                                 data-action="selectAll"
                                 {{#if indeterminate}}indeterminate{{/if}}></dcm-checkbox>
-                <span class="title">{{ localize "All" }}</span>
+                <span class="title">{{ localize "DCM.Common.All" }}</span>
             </label>
         </li>
         <hr/>
@@ -51,16 +51,15 @@
                 <div class="slide-toggle-thumb"></div>
             </div> -->
             </dcm-slide-toggle>
-            <span>Apply Management</span>
+            <span>{{ localize "DCM.SourceSelector.ApplyManagement" }}</span>
             </label>
         </div>
     </div>  
 
     {{#if isSpellList}}
         <div class="filter note roboto-condensed-upper">
-            <p>Work In Progress</p>
-            <p>Some Compendiums cannot be unselected as Spell Lists loaded by modules
-            cannot currently be unloaded.</p>
+            <p>{{ localize "DCM.Common.WorkInProgress" }}</p>
+            <p>{{ localize "DCM.SourceSelector.SpellListNote" }}</p>
         </div>
     {{/if}}
 

@@ -8,3 +8,4 @@ CHANGELOG_internal.md
 .DS_Store
 dist/
 CLAUDE.md
+/lang-unreviewed/

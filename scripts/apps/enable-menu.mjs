@@ -12,7 +12,7 @@ export class EnableMenu extends HandlebarsApplicationMixin(ApplicationV2) {
     static DEFAULT_OPTIONS = {
             tag: "form",
             window: {
-                title: "Choose Filtered Types",
+                title: "DCM.EnableMenu.Title",
                 icon: null,
                 resizeable: true
             },

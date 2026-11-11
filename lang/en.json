@@ -1,0 +1,244 @@
+{
+  "DCM": {
+    "Common": {
+      "All": "All",
+      "SelectAll": "Select All",
+      "Cancel": "Cancel",
+      "Delete": "Delete",
+      "WorkInProgress": "Work In Progress",
+      "NoResults": "No results found",
+      "World": "World",
+      "SystemSource": "D&D 5E Core",
+      "Unknown": "Unknown"
+    },
+    "Type": {
+      "Items": "Items",
+      "Spells": "Spells",
+      "SpellLists": "Spell Lists",
+      "Classes": "Classes",
+      "Subclasses": "Subclasses",
+      "Feats": "Feats",
+      "Species": "Species",
+      "Races": "Races",
+      "Backgrounds": "Backgrounds",
+      "Monsters": "Monsters"
+    },
+    "Metadata": {
+      "Type": "Type",
+      "LevelSchool": "Level | School",
+      "Class": "Class",
+      "FeatType": "Feat Type"
+    },
+    "Group": {
+      "Module": "Module",
+      "Compendium": "Compendium",
+      "Source": "Source",
+      "Type": "Type",
+      "School": "School",
+      "SpellLevel": "Spell Level",
+      "Name": "Name",
+      "Journal": "Journal",
+      "Class": "Class",
+      "FeatType": "Feat Type"
+    },
+    "Settings": {
+      "SourceMenu": {
+        "Name": "Compendium Sources",
+        "Label": "Configure Sources",
+        "Hint": "Choose the compendia which will be used as sources for character options"
+      },
+      "ContentMenu": {
+        "Name": "Player Content",
+        "Label": "Configure Content",
+        "Hint": "Choose which items from your selected compendia will be available for players"
+      },
+      "HandbookMenu": {
+        "Name": "Player Option Journals",
+        "Label": "Create Player Option Journals",
+        "Hint": "Create a set of Journals which contain the selected player options"
+      },
+      "ClearMenu": {
+        "Name": "Clear Settings",
+        "Label": "Clear Settings",
+        "Hint": "Erase all settings (for sources and allowed content)"
+      },
+      "ExportMenu": {
+        "Name": "Export Settings",
+        "Label": "Download File",
+        "Hint": "Download current settings as a JSON file"
+      },
+      "ImportMenu": {
+        "Name": "Load Settings",
+        "Label": "Upload File",
+        "Hint": "Upload a JSON file with existing settings"
+      },
+      "InjectCompendiumButtons": {
+        "Name": "Add Compendium Sidebar Buttons",
+        "Hint": "Add buttons for configuring options and creating the player journal to the compendium tab"
+      },
+      "InjectItemButton": {
+        "Name": "Add Item Toggle",
+        "Hint": "Adds toggle to item sheets to directly enable/disable without opening the configuration menu"
+      },
+      "FilterQuickInsert": {
+        "Name": "Filter Quick Insert Results",
+        "Hint": "Filter results returned by Quick Insert (if installed)"
+      },
+      "FilterSpotlight": {
+        "Name": "Filter Spotlight Omnisearch Results",
+        "Hint": "Filter results returned by Spotlight Omnisearch (if installed)"
+      },
+      "FilterHeromancer": {
+        "Name": "Filter Hero Mancer Options",
+        "Hint": "Filter player options shown by Hero-Mancer (if installed)"
+      },
+      "PlayerHandbookOptions": {
+        "Name": "Player Handbook Options"
+      },
+      "OverrideCompendium": {
+        "Name": "Handbook Override Compendium",
+        "Hint": "Compendium to search for custom Class, Subclass, Species, and Background Journal Pages. If the desired compendium isn't present, reload Foundry",
+        "None": "<No Override Compendium>",
+        "Default": "<Default | DCM Overrides>",
+        "Create": "<Create Default Compendium>"
+      }
+    },
+    "SourceSelector": {
+      "Title": "Compendium Source Selector",
+      "ApplyManagement": "Apply Management",
+      "SpellListNote": "Some Compendiums cannot be unselected as Spell Lists loaded by modules cannot currently be unloaded."
+    },
+    "ContentSelector": {
+      "Title": "Choose Available Content",
+      "SidebarButton": "Configure Player Content",
+      "OpenTooltip": "Open Content Selector",
+      "OpenSourceConfig": "Open Source Config",
+      "SelectedCount": "{selected}/{total} Selected",
+      "Column": {
+        "Item": "Item",
+        "Source": "Source",
+        "Module": "Module"
+      },
+      "NeedV4": "You need to update to D&D5E v4 or higher to manage spell lists",
+      "SpellListNote": "Spell lists are only updated when the game is reloaded. In addition, spell lists loaded by modules cannot be unloaded.",
+      "NoSources": "No compendium sources selected.",
+      "ManagementDisabled": "Managing {type} disabled",
+      "ReloadTitle": "Reload Page?",
+      "ReloadContent": "Changing spell lists only takes effect when Foundry is reloaded. Reload now?",
+      "NoIdentifier": "No identifier",
+      "UntitledJournal": "Untitled Journal"
+    },
+    "Sidebar": {
+      "SearchLabel": "Search results",
+      "SearchPlaceholder": "Search options",
+      "GroupBy": "Group By:",
+      "Filter": "Filter:",
+      "UniqueOnly": "Unique Only",
+      "DuplicatesOnly": "Duplicates Only"
+    },
+    "EnableMenu": {
+      "Title": "Choose Filtered Types",
+      "Hint": "Select which item types to enable filtering"
+    },
+    "ClearMenu": {
+      "Title": "Clear Content",
+      "Sources": "Clear Compendium source configuration and reset enabled",
+      "Selections": "Clear approved content selections",
+      "Warning": "WARNING: This operation cannot be reversed"
+    },
+    "Export": {
+      "Title": "Export Settings",
+      "Content": "Download DnD Content Manager settings?",
+      "Download": "Download"
+    },
+    "Import": {
+      "Title": "Import Settings",
+      "Content": "Upload a DnD Content Manager settings file to import.",
+      "Import": "Import",
+      "NoFile": "No file selected. Please choose a file to import.",
+      "Success": "Settings imported successfully!",
+      "ParseError": "Failed to parse the file. Ensure it is valid JSON.",
+      "ReadError": "Failed to read the file. Please try again."
+    },
+    "ItemToggle": {
+      "Enable": "Enable Item in DCM",
+      "Disable": "Disable Item in DCM",
+      "SourceDisabled": "Item Source Disabled in DCM: Open Source Config",
+      "Enabled": "{name} is now enabled in DCM.",
+      "Disabled": "{name} is now disabled in DCM."
+    },
+    "GMView": {
+      "Enable": "Show all content (GM View)",
+      "Disable": "Show player content",
+      "Note": "GM View: showing all content, including content hidden from players."
+    },
+    "Handbook": {
+      "Title": "Create Player Handbook",
+      "SidebarTooltip": "Create Player Option Journals",
+      "Intro": "Create a player-readable handbook for the content you've selected.",
+      "ContentSelection": "Content Selection",
+      "ClassesHint": "Includes classes, subclasses, and their associated spell lists",
+      "ContentConfiguration": "Content Configuration",
+      "ExistingPages": "Existing Pages",
+      "ExistingPagesHint": "Use class and subclass pages found in compendiums in this world instead of generating basic ones.",
+      "OverridePages": "Override Pages",
+      "OverridePagesHint": "Use user-provided pages from the override compendium instead of using those found in other compendiums.",
+      "NoOverride": "No override compendium configured",
+      "JournalConfiguration": "Handbook Journal Configuration",
+      "JournalTitle": "Title",
+      "JournalTitleHint": "Title used for the generated handbook and/or compendium. If a folder or compendium with a matching title already exists, its content will be replaced",
+      "JournalStyle": "Journal Style",
+      "JournalStyleHint": "Choose the journal style used for the generated journals.",
+      "DefaultStyle": "Default Style",
+      "Create": "Create Handbook",
+      "DefaultFolderTitle": "Player Handbook",
+      "Created": "Created player options journals",
+      "JournalCreateFailed": "Failed to create a new Journal Entry.",
+      "SubclassParentFiltered": "Subclass {subclass} is selected but parent class {class} is filtered by DnD Content Manager",
+      "SubclassParentMissing": "Subclass {subclass} is selected but parent class not found. Parent class Id is {id}",
+      "UnknownClass": "Unknown Class",
+      "UnknownClassText": "These subclasses are for an unknown class",
+      "SpellList": "Spell List",
+      "ClassSpellList": "{class} Spell List",
+      "IndexIntro": "The following {label} can be used to build your character",
+      "AnyAbility": "Any",
+      "AbilityList": "{list} and {last}",
+      "NotSet": "Not Set",
+      "ItemTypePlural": "{type}s",
+      "Column": {
+        "Background": "Background",
+        "AbilityScores": "Ability Scores",
+        "Feat": "Feat"
+      }
+    },
+    "Override": {
+      "Label": "DCM Overrides",
+      "Created": "Created DCM Overrides Compendium",
+      "Journal": {
+        "Class": "Class",
+        "Background": "Background",
+        "Species": "Species"
+      }
+    },
+    "Feat": {
+      "EpicBoon": "Epic Boon",
+      "FightingStyle": "Fighting Style",
+      "General": "General Feat",
+      "Origin": "Origin Feat",
+      "Feat": "Feat",
+      "Unspecified": "Unspecified Feat Type"
+    },
+    "Monster": {
+      "Unknown": "Unknown"
+    },
+    "Notify": {
+      "SaveFailed": "{module}: Failed to save a setting. See the console (F12) for details.",
+      "NoContent": "{module}: {type} filtering is enabled but no content is selected — filtering for this type is disabled"
+    },
+    "Migration": {
+      "BothActive": "{module}: The original \"DnD Content Manager\" module is also active in this world. Disable it and keep only \"Nik's DnD Content Manager\".",
+      "Failed": "{module}: Could not copy your settings from the previous module version. See the console (F12) for details.",
+      "Done": "{module}: Your settings were copied from the previous module version. Reloading…"
+    }
+  }
+}

@@ -39,10 +39,10 @@ function injectItemButton(app, controls) {
     if (itemIndexType === null) return;
 
     const { sourceEnabled, selected } = getItemToggleState(item);
-    let label = selected ? "Disable Item in DCM" : "Enable Item in DCM";
+    let label = selected ? "DCM.ItemToggle.Disable" : "DCM.ItemToggle.Enable";
     let icon = selected ? "fa-solid fa-eye" : "fa-solid fa-eye-slash";
     if (!sourceEnabled) {
-        label = "Item Source Disabled in DCM: Open Source Config";
+        label = "DCM.ItemToggle.SourceDisabled";
         icon = "fa-solid fa-ban";
     }
 
@@ -58,10 +58,10 @@ function injectItemButton(app, controls) {
             }
             if (state.selected) {
                 removeContent(itemIndexType, [item.uuid]);
-                ui.notifications.info(`${item.name} is now disabled in DCM.`);
+                ui.notifications.info(game.i18n.format("DCM.ItemToggle.Disabled", { name: item.name }));
             } else {
                 addContent(itemIndexType, [item.uuid]);
-                ui.notifications.info(`${item.name} is now enabled in DCM.`);
+                ui.notifications.info(game.i18n.format("DCM.ItemToggle.Enabled", { name: item.name }));
             }
         }
     });

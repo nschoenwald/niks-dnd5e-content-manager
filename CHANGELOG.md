@@ -1,3 +1,12 @@
+### 14.3.0
+New Features:
+- GM View for the Compendium Browser: GMs get an eye button in the browser's title bar that shows all content, unfiltered, in that window. A note above the results shows when it's on. Every newly opened browser starts in the normal player view, and players don't see the button
+- German translation. All texts of the module can now be translated
+
+Bug Fixes:
+- The warning about a subclass whose class is filtered out now names the right class (it always said "Bard")
+- Recreating the player option journals in another language replaces the old journals instead of adding a second set
+
 ### 14.2.0
 Other Changes:
 - This fork is now its own module, "Nik's DnD Content Manager". Before, it shared its ID with jennis0's original, so Foundry's Update button kept replacing it with the original's version 1.6.0

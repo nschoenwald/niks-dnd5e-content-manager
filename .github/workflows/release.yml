@@ -34,7 +34,9 @@ jobs:
           node-version: 20
 
       - name: Validate JSON files
-        run: jq empty module.json
+        run: |
+          jq empty module.json
+          for f in lang/*.json; do jq empty "$f"; done
 
       # The journal compendium is stored as YAML in packs/_source; compile it to LevelDB for the release.
       - name: Build compendium packs
@@ -50,7 +52,7 @@ jobs:
 
       - name: Create Module Archive
         run: |
-          zip -r module.zip module.json scripts styles templates packs README.md LICENSE CHANGELOG.md \
+          zip -r module.zip module.json scripts styles templates lang packs README.md LICENSE CHANGELOG.md \
             -x 'packs/_source/*' 'packs/*/LOCK' 'scripts/packaging/*'
 
       - name: Upload Release Assets

@@ -5,7 +5,7 @@ function getMonsterTypeV3(type) {
 
 function getMonsterTypeV4(type) {
     if (type in CONFIG.DND5E.creatureTypes) {
-        return CONFIG.DND5E.creatureTypes[type].label
+        return game.i18n.localize(CONFIG.DND5E.creatureTypes[type].label)
     }
     else {
         return `${type.slice(0, 1).toUpperCase()}${type.slice(1, type.length)}`
@@ -15,7 +15,7 @@ function getMonsterTypeV4(type) {
 export function getMonsterType(type) {
 
     if (!type) {
-        return "Unknown"
+        return game.i18n.localize("DCM.Monster.Unknown")
     }
 
     if (CONFIG.dndContentManager.systemV3) {

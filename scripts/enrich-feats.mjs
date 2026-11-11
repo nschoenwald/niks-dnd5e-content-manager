@@ -1,22 +1,22 @@
 const FEAT_TYPES = new Map([
-    ["epicBoon", "Epic Boon"],
-    ["fightingStyle", "Fighting Style"],
-    ["general", "General Feat"],
-    ["origin", "Origin Feat"],
+    ["epicBoon", "DCM.Feat.EpicBoon"],
+    ["fightingStyle", "DCM.Feat.FightingStyle"],
+    ["general", "DCM.Feat.General"],
+    ["origin", "DCM.Feat.Origin"],
 ])
 
 function getFeatTypeV3(ident) {
     if (FEAT_TYPES.has(ident)) {
-        return FEAT_TYPES.get(ident)
+        return game.i18n.localize(FEAT_TYPES.get(ident))
     }
-    return "Feat"
+    return game.i18n.localize("DCM.Feat.Feat")
 }
 
 function getFeatTypeV4(ident) {
     if (ident in CONFIG.DND5E.featureTypes.feat.subtypes) {
-        return CONFIG.DND5E.featureTypes.feat.subtypes[ident]
+        return game.i18n.localize(CONFIG.DND5E.featureTypes.feat.subtypes[ident])
     }
-    return "Unspecified Feat Type"
+    return game.i18n.localize("DCM.Feat.Unspecified")
 }
 
 export function getFeatType(ident) {

@@ -1,0 +1,244 @@
+{
+  "DCM": {
+    "Common": {
+      "All": "Alle",
+      "SelectAll": "Alle auswählen",
+      "Cancel": "Abbrechen",
+      "Delete": "Löschen",
+      "WorkInProgress": "In Arbeit",
+      "NoResults": "Keine Ergebnisse gefunden",
+      "World": "Welt",
+      "SystemSource": "D&D 5E Grundregeln",
+      "Unknown": "Unbekannt"
+    },
+    "Type": {
+      "Items": "Gegenstände",
+      "Spells": "Zauber",
+      "SpellLists": "Zauberlisten",
+      "Classes": "Klassen",
+      "Subclasses": "Unterklassen",
+      "Feats": "Talente",
+      "Species": "Spezies",
+      "Races": "Völker",
+      "Backgrounds": "Hintergründe",
+      "Monsters": "Monster"
+    },
+    "Metadata": {
+      "Type": "Typ",
+      "LevelSchool": "Grad | Schule",
+      "Class": "Klasse",
+      "FeatType": "Talenttyp"
+    },
+    "Group": {
+      "Module": "Modul",
+      "Compendium": "Kompendium",
+      "Source": "Quelle",
+      "Type": "Typ",
+      "School": "Schule",
+      "SpellLevel": "Zaubergrad",
+      "Name": "Name",
+      "Journal": "Journal",
+      "Class": "Klasse",
+      "FeatType": "Talenttyp"
+    },
+    "Settings": {
+      "SourceMenu": {
+        "Name": "Kompendiumquellen",
+        "Label": "Quellen festlegen",
+        "Hint": "Wähle die Kompendien, aus denen die Charakteroptionen stammen."
+      },
+      "ContentMenu": {
+        "Name": "Spielerinhalte",
+        "Label": "Inhalte festlegen",
+        "Hint": "Wähle, welche Einträge aus den gewählten Kompendien den Spielern zur Verfügung stehen."
+      },
+      "HandbookMenu": {
+        "Name": "Journale mit Spieleroptionen",
+        "Label": "Journale mit Spieleroptionen erstellen",
+        "Hint": "Erstellt Journale, die die ausgewählten Spieleroptionen enthalten."
+      },
+      "ClearMenu": {
+        "Name": "Einstellungen zurücksetzen",
+        "Label": "Einstellungen zurücksetzen",
+        "Hint": "Löscht alle Einstellungen (Quellen und erlaubte Inhalte)."
+      },
+      "ExportMenu": {
+        "Name": "Einstellungen exportieren",
+        "Label": "Datei herunterladen",
+        "Hint": "Lädt die aktuellen Einstellungen als JSON-Datei herunter."
+      },
+      "ImportMenu": {
+        "Name": "Einstellungen laden",
+        "Label": "Datei hochladen",
+        "Hint": "Lädt eine JSON-Datei mit gespeicherten Einstellungen hoch."
+      },
+      "InjectCompendiumButtons": {
+        "Name": "Schaltflächen in der Kompendium-Seitenleiste",
+        "Hint": "Fügt dem Kompendium-Tab Schaltflächen hinzu, um die Optionen festzulegen und das Spielerjournal zu erstellen."
+      },
+      "InjectItemButton": {
+        "Name": "Umschalter auf Gegenstandsbögen",
+        "Hint": "Fügt Gegenstandsbögen einen Umschalter hinzu, um den Eintrag direkt zu erlauben oder zu sperren, ohne das Einstellungsmenü zu öffnen."
+      },
+      "FilterQuickInsert": {
+        "Name": "Quick-Insert-Ergebnisse filtern",
+        "Hint": "Filtert die Ergebnisse von Quick Insert (falls installiert)."
+      },
+      "FilterSpotlight": {
+        "Name": "Spotlight-Omnisearch-Ergebnisse filtern",
+        "Hint": "Filtert die Ergebnisse von Spotlight Omnisearch (falls installiert)."
+      },
+      "FilterHeromancer": {
+        "Name": "Hero-Mancer-Optionen filtern",
+        "Hint": "Filtert die Spieleroptionen, die Hero Mancer anzeigt (falls installiert)."
+      },
+      "PlayerHandbookOptions": {
+        "Name": "Optionen für das Spielerhandbuch"
+      },
+      "OverrideCompendium": {
+        "Name": "Ersatz-Kompendium für das Handbuch",
+        "Hint": "Kompendium mit eigenen Journalseiten für Klassen, Unterklassen, Spezies und Hintergründe. Fehlt das gewünschte Kompendium, lade Foundry neu.",
+        "None": "<Kein Ersatz-Kompendium>",
+        "Default": "<Standard | DCM-Ersatzseiten>",
+        "Create": "<Standard-Kompendium erstellen>"
+      }
+    },
+    "SourceSelector": {
+      "Title": "Kompendiumquellen auswählen",
+      "ApplyManagement": "Verwaltung anwenden",
+      "SpellListNote": "Manche Kompendien lassen sich nicht abwählen, weil von Modulen geladene Zauberlisten derzeit nicht entladen werden können."
+    },
+    "ContentSelector": {
+      "Title": "Verfügbare Inhalte wählen",
+      "SidebarButton": "Spielerinhalte festlegen",
+      "OpenTooltip": "Inhaltsauswahl öffnen",
+      "OpenSourceConfig": "Quellen festlegen",
+      "SelectedCount": "{selected}/{total} ausgewählt",
+      "Column": {
+        "Item": "Eintrag",
+        "Source": "Quelle",
+        "Module": "Modul"
+      },
+      "NeedV4": "Um Zauberlisten zu verwalten, brauchst du D&D5E v4 oder neuer.",
+      "SpellListNote": "Zauberlisten werden erst beim Neuladen des Spiels aktualisiert. Außerdem können von Modulen geladene Zauberlisten nicht entladen werden.",
+      "NoSources": "Keine Kompendiumquellen ausgewählt.",
+      "ManagementDisabled": "Verwaltung von {type} ist deaktiviert",
+      "ReloadTitle": "Seite neu laden?",
+      "ReloadContent": "Geänderte Zauberlisten werden erst nach einem Neuladen von Foundry wirksam. Jetzt neu laden?",
+      "NoIdentifier": "Keine Kennung",
+      "UntitledJournal": "Unbenanntes Journal"
+    },
+    "Sidebar": {
+      "SearchLabel": "Ergebnisse durchsuchen",
+      "SearchPlaceholder": "Optionen durchsuchen",
+      "GroupBy": "Gruppieren nach:",
+      "Filter": "Filter:",
+      "UniqueOnly": "Nur einmalige",
+      "DuplicatesOnly": "Nur Duplikate"
+    },
+    "EnableMenu": {
+      "Title": "Gefilterte Typen wählen",
+      "Hint": "Wähle, für welche Eintragstypen gefiltert werden soll."
+    },
+    "ClearMenu": {
+      "Title": "Inhalte zurücksetzen",
+      "Sources": "Kompendiumquellen zurücksetzen und Verwaltung wieder aktivieren",
+      "Selections": "Erlaubte Inhalte zurücksetzen",
+      "Warning": "ACHTUNG: Das kann nicht rückgängig gemacht werden."
+    },
+    "Export": {
+      "Title": "Einstellungen exportieren",
+      "Content": "Einstellungen von DnD Content Manager herunterladen?",
+      "Download": "Herunterladen"
+    },
+    "Import": {
+      "Title": "Einstellungen importieren",
+      "Content": "Lade eine Einstellungsdatei von DnD Content Manager hoch, um sie zu importieren.",
+      "Import": "Importieren",
+      "NoFile": "Keine Datei ausgewählt. Bitte wähle eine Datei zum Importieren.",
+      "Success": "Einstellungen erfolgreich importiert!",
+      "ParseError": "Die Datei konnte nicht gelesen werden. Prüfe, ob sie gültiges JSON enthält.",
+      "ReadError": "Die Datei konnte nicht gelesen werden. Bitte versuche es erneut."
+    },
+    "ItemToggle": {
+      "Enable": "In DCM erlauben",
+      "Disable": "In DCM sperren",
+      "SourceDisabled": "Quelle in DCM nicht ausgewählt: Quellen festlegen",
+      "Enabled": "{name} ist jetzt in DCM erlaubt.",
+      "Disabled": "{name} ist jetzt in DCM gesperrt."
+    },
+    "GMView": {
+      "Enable": "Alle Inhalte zeigen (SL-Ansicht)",
+      "Disable": "Spielerinhalte zeigen",
+      "Note": "SL-Ansicht: Es werden alle Inhalte gezeigt, auch die für Spieler ausgeblendeten."
+    },
+    "Handbook": {
+      "Title": "Spielerhandbuch erstellen",
+      "SidebarTooltip": "Journale mit Spieleroptionen erstellen",
+      "Intro": "Erstellt ein Handbuch für die Spieler mit den von dir gewählten Inhalten.",
+      "ContentSelection": "Inhaltsauswahl",
+      "ClassesHint": "Enthält Klassen, Unterklassen und ihre Zauberlisten",
+      "ContentConfiguration": "Inhaltseinstellungen",
+      "ExistingPages": "Vorhandene Seiten",
+      "ExistingPagesHint": "Verwendet Klassen- und Unterklassenseiten aus den Kompendien dieser Welt, statt einfache Seiten zu erzeugen.",
+      "OverridePages": "Ersatzseiten",
+      "OverridePagesHint": "Verwendet eigene Seiten aus dem Ersatz-Kompendium statt der Seiten aus anderen Kompendien.",
+      "NoOverride": "Kein Ersatz-Kompendium festgelegt",
+      "JournalConfiguration": "Einstellungen für die Handbuch-Journale",
+      "JournalTitle": "Titel",
+      "JournalTitleHint": "Titel des erzeugten Handbuchs bzw. Kompendiums. Gibt es schon einen Ordner oder ein Kompendium mit diesem Titel, wird dessen Inhalt ersetzt.",
+      "JournalStyle": "Journalstil",
+      "JournalStyleHint": "Wähle den Stil der erzeugten Journale.",
+      "DefaultStyle": "Standardstil",
+      "Create": "Handbuch erstellen",
+      "DefaultFolderTitle": "Spielerhandbuch",
+      "Created": "Journale mit Spieleroptionen erstellt",
+      "JournalCreateFailed": "Der Journaleintrag konnte nicht erstellt werden.",
+      "SubclassParentFiltered": "Die Unterklasse {subclass} ist ausgewählt, aber ihre Klasse {class} wird von DnD Content Manager herausgefiltert",
+      "SubclassParentMissing": "Die Unterklasse {subclass} ist ausgewählt, aber ihre Klasse wurde nicht gefunden. Kennung der Klasse: {id}",
+      "UnknownClass": "Unbekannte Klasse",
+      "UnknownClassText": "Diese Unterklassen gehören zu einer unbekannten Klasse",
+      "SpellList": "Zauberliste",
+      "ClassSpellList": "Zauberliste: {class}",
+      "IndexIntro": "Folgende {label} kannst du für deinen Charakter verwenden",
+      "AnyAbility": "Beliebig",
+      "AbilityList": "{list} und {last}",
+      "NotSet": "Nicht festgelegt",
+      "ItemTypePlural": "{type}",
+      "Column": {
+        "Background": "Hintergrund",
+        "AbilityScores": "Attributswerte",
+        "Feat": "Talent"
+      }
+    },
+    "Override": {
+      "Label": "DCM-Ersatzseiten",
+      "Created": "Kompendium „DCM-Ersatzseiten“ erstellt",
+      "Journal": {
+        "Class": "Klasse",
+        "Background": "Hintergrund",
+        "Species": "Spezies"
+      }
+    },
+    "Feat": {
+      "EpicBoon": "Epische Gabe",
+      "FightingStyle": "Kampfstil",
+      "General": "Allgemeines Talent",
+      "Origin": "Herkunftstalent",
+      "Feat": "Talent",
+      "Unspecified": "Talenttyp nicht angegeben"
+    },
+    "Monster": {
+      "Unknown": "Unbekannt"
+    },
+    "Notify": {
+      "SaveFailed": "{module}: Eine Einstellung konnte nicht gespeichert werden. Details in der Konsole (F12).",
+      "NoContent": "{module}: Das Filtern von {type} ist aktiviert, aber keine Inhalte sind ausgewählt – für diesen Typ wird nicht gefiltert"
+    },
+    "Migration": {
+      "BothActive": "{module}: Das ursprüngliche Modul „DnD Content Manager“ ist in dieser Welt ebenfalls aktiv. Deaktiviere es und behalte nur „Nik's DnD Content Manager“.",
+      "Failed": "{module}: Deine Einstellungen konnten nicht aus der vorherigen Modulversion übernommen werden. Details in der Konsole (F12).",
+      "Done": "{module}: Deine Einstellungen wurden aus der vorherigen Modulversion übernommen. Seite wird neu geladen…"
+    }
+  }
+}

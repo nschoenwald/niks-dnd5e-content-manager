@@ -49,18 +49,16 @@ export function importSettings(json) {
 export class ExportDialog extends foundry.applications.api.DialogV2 {
     constructor() {
         super({
-            window: { title: "Export Settings" },
-            content: `
-              <p>Download DnD Content Manager settings?
-            `,
+            window: { title: "DCM.Export.Title" },
+            content: `<p>${game.i18n.localize("DCM.Export.Content")}</p>`,
             buttons: [{
               action: "submit",
-              label: "Download",
+              label: "DCM.Export.Download",
               default: true,
               callback: (event, button, dialog) => this.downloadFile(exportSettings())
             }, {
               action: "cancel",
-              label: "Cancel"
+              label: "DCM.Common.Cancel"
             }]
         })
     }
@@ -84,19 +82,19 @@ export class ExportDialog extends foundry.applications.api.DialogV2 {
 export class ImportDialog extends foundry.applications.api.DialogV2 {
     constructor() {
         super({
-            window: { title: "Import Settings" },
+            window: { title: "DCM.Import.Title" },
             content: `
-              <p>Upload a DnD Content Manager settings file to import.</p>
+              <p>${game.i18n.localize("DCM.Import.Content")}</p>
               <input type="file" id="file-input" accept=".json" />
             `,
             buttons: [{
                 action: "submit",
-                label: "Import",
+                label: "DCM.Import.Import",
                 default: true,
                 callback: (event, button, dialog) => this.importFile()
             }, {
                 action: "cancel",
-                label: "Cancel"
+                label: "DCM.Common.Cancel"
             }],
         });
     }
@@ -105,7 +103,7 @@ export class ImportDialog extends foundry.applications.api.DialogV2 {
         // Get the file input element
         const fileInput = document.querySelector('#file-input');
         if (!fileInput || !fileInput.files.length) {
-            ui.notifications.warn("No file selected. Please choose a file to import.");
+            ui.notifications.warn(game.i18n.localize("DCM.Import.NoFile"));
             return;
         }
 
@@ -121,15 +119,15 @@ export class ImportDialog extends foundry.applications.api.DialogV2 {
                 log("Imported settings")
 
                 // Process the data as needed (e.g., apply settings)
-                ui.notifications.info("Settings imported successfully!");
+                ui.notifications.info(game.i18n.localize("DCM.Import.Success"));
             } catch (err) {
-                ui.notifications.error("Failed to parse the file. Ensure it is valid JSON.");
+                ui.notifications.error(game.i18n.localize("DCM.Import.ParseError"));
                 error("Error parsing file:", err);
             }
         };
 
         reader.onerror = () => {
-            ui.notifications.error("Failed to read the file. Please try again.");
+            ui.notifications.error(game.i18n.localize("DCM.Import.ReadError"));
             error("FileReader Error:", reader.error);
         };
 

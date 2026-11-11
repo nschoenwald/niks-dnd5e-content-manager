@@ -17,6 +17,15 @@ export function setupFoundryMocks() {
                 settingsStore.set(path, value);
             },
         },
+        // Returns the key, so tests can assert which message was shown
+        i18n: {
+            localize(key) {
+                return key;
+            },
+            format(key, data = {}) {
+                return `${key} ${JSON.stringify(data)}`;
+            },
+        },
         user: {
             role: 4,
             permissions: {},

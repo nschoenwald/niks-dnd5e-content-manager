@@ -12,7 +12,7 @@ export class ClearSettings extends HandlebarsApplicationMixin(ApplicationV2) {
     static DEFAULT_OPTIONS = {
             tag: "form",
             window: {
-                title: "Clear Content",
+                title: "DCM.ClearMenu.Title",
                 icon: "fas fa-trash",
                 resizeable: true
             },
@@ -46,7 +46,7 @@ export class ClearSettings extends HandlebarsApplicationMixin(ApplicationV2) {
 
     async _prepareContext(options) {
         const context = await super._prepareContext(options);
-        context.buttons = [{ type: "submit", icon: "fas fa-trash", label: "Delete" }];
+        context.buttons = [{ type: "submit", icon: "fas fa-trash", label: "DCM.Common.Delete" }];
         return context;
     }
 

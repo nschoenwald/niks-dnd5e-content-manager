@@ -75,8 +75,8 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
 
         if (this.reloadRequired) {
             foundry.applications.api.DialogV2.confirm({
-                window: { title: "Reload Page?" },
-                content: "<p>Changing spell lists only takes effect when Foundry is reloaded. Reload now?</p>",
+                window: { title: "DCM.ContentSelector.ReloadTitle" },
+                content: `<p>${game.i18n.localize("DCM.ContentSelector.ReloadContent")}</p>`,
                 modal: true,
                 submit: (result) => {if (result) {window.location.reload()}}
               })
@@ -96,9 +96,9 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
         const button = document.createElement("button");
         button.classList.add("content-selector-button")
         button.type = "button";
-        button.setAttribute("data-tooltip", "Open Content Selector")
+        button.setAttribute("data-tooltip", game.i18n.localize("DCM.ContentSelector.OpenTooltip"))
         button.innerHTML = `
-          <i class="fas fa-ballot" inert></i>Configure Player Content`;
+          <i class="fas fa-ballot" inert></i>${game.i18n.localize("DCM.ContentSelector.SidebarButton")}`;
         button.addEventListener("click", event => (new ContentSelector()).render({ force: true }));
         return button;
       }
@@ -117,8 +117,9 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
         const settingsButton = document.createElement("button");
         settingsButton.classList.add("header-control");
         settingsButton.classList.add("fas", "fa-cog", "icon")
-        settingsButton.dataset.tooltip = "Open Source Config"
-        settingsButton.setAttribute("aria-label", "Open Source Config");
+        settingsButton.type = "button";
+        settingsButton.dataset.tooltip = game.i18n.localize("DCM.ContentSelector.OpenSourceConfig")
+        settingsButton.setAttribute("aria-label", game.i18n.localize("DCM.ContentSelector.OpenSourceConfig"));
         settingsButton.addEventListener("click", event => {
             event.stopPropagation();
             new SourceSelector(
@@ -140,7 +141,7 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
     static DEFAULT_OPTIONS = {
             tag: "form",
             window: {
-                title: "Choose Available Content",
+                title: "DCM.ContentSelector.Title",
                 icon: "fas fa-ballot",
                 resizeable: true
             },
@@ -295,7 +296,7 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
         const n_on = boxes.filter(b => b.checked).length;
 
         const count = section.querySelector(".selected-count");
-        if (count) count.textContent = `${n_on}/${boxes.length} Selected`;
+        if (count) count.textContent = game.i18n.format("DCM.ContentSelector.SelectedCount", { selected: n_on, total: boxes.length });
 
         const all_box = section.querySelector("dcm-checkbox[data-action=selectAll]");
         if (all_box) {
@@ -462,10 +463,10 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
      */
     _getSourceName(sourceType, sourceId) {
         if (sourceType === "world") {
-            return "World";
+            return game.i18n.localize("DCM.Common.World");
         };
         if (sourceType === "system") {
-            return "D&D 5E Core";
+            return game.i18n.localize("DCM.Common.SystemSource");
         };
         return game.modules.get(sourceId).title;
     }
@@ -485,7 +486,7 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
         if (pack.metadata.packageType === "world") {
             return {
                 id: "world",
-                title: "World"
+                title: game.i18n.localize("DCM.Common.World")
             }
         }
         if (pack.metadata.packageType === "system") {
@@ -593,7 +594,7 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
                         ident = `${ident.charAt(0).toUpperCase()}${ident.slice(1, ident.length)}`
                     }
                 } else {
-                    ident = "No identifier"
+                    ident = game.i18n.localize("DCM.ContentSelector.NoIdentifier")
                 }
 
                 const label = p.name ?? "";
@@ -610,7 +611,7 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
                     sourceName: p.parent.name,
                     compendium: pack.metadata.id,
                     compendiumName,
-                    journal: d.name || "Untitled Journal",
+                    journal: d.name || game.i18n.localize("DCM.ContentSelector.UntitledJournal"),
                     img: img
                 }
 
@@ -627,7 +628,7 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
     _getItems(pack) {
         return this._fetch(pack,
             d => SETTINGS.items.item_subtypes.includes(d.type) && !d.system.container,
-            d => {return {metadata: `${d.type.slice(0, 1).toUpperCase()}${d.type.slice(1, d.type.length)}`}}
+            d => {return {metadata: CONFIG.Item.typeLabels[d.type] ? game.i18n.localize(CONFIG.Item.typeLabels[d.type]) : d.type}}
         )
     }
 
@@ -754,7 +755,7 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
             return [{
                 id: "all",
                 entries: allEntries.sort(byLabel),
-                label: "All",
+                label: game.i18n.localize("DCM.Common.All"),
                 source: null,
                 category: itemtype,
                 checked: n_checked === allEntries.length,

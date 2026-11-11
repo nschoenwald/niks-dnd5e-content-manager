@@ -1,4 +1,4 @@
-import { MODULE_NAME, SETTINGS } from "../settings.mjs"
+import { MODULE_NAME } from "../settings.mjs"
 import { getOverrideCompendium } from "./override-compendium.mjs"
 
 /**
@@ -50,9 +50,10 @@ export async function makeJournal(title, sheet, journalType, folder=null) {
 
 
     //Delete existing journal if present
+    // Matched by folder and DCM journal type only (one journal per type and folder), not by name, so a
+    // handbook made in another language is still replaced instead of duplicated.
     const existingJournal = game.journal.filter(p => p.folder?.uuid === folder?.uuid 
-        && p.name === SETTINGS[journalType].label 
-        && p.flags.dcm.journalType === journalType
+        && p.flags.dcm?.journalType === journalType
     )
     if (existingJournal.length > 0) {
         await existingJournal[0].delete()
@@ -76,7 +77,7 @@ export async function makeJournal(title, sheet, journalType, folder=null) {
     //Create journal
     const newJournal = await JournalEntry.create(journalData)
     if (!newJournal) {
-        ui.notifications.error("Failed to create a new Journal Entry.");
+        ui.notifications.error(game.i18n.localize("DCM.Handbook.JournalCreateFailed"));
         return;
     }
     return newJournal;

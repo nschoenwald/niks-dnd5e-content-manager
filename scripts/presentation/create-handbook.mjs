@@ -1,4 +1,5 @@
 import { log } from "../lib.mjs";
+import { SETTINGS } from "../settings.mjs";
 import { createClassbook } from "./create-classbook.mjs";
 import { createGroupedItembook, createItembook } from "./create-itembook.mjs";
 import { createSpellbook } from "./create-spellbook.mjs";
@@ -19,6 +20,7 @@ import { createSpellbook } from "./create-spellbook.mjs";
 export async function createHandbooks(options) {
     // Get or create the target folder if specified
     let folder = null;
+    options.folderTitle ||= game.i18n.localize("DCM.Handbook.DefaultFolderTitle");
     if (options.folderTitle) {
         folder = await getOrCreateFolder(options.folderTitle);
     }
@@ -54,7 +56,7 @@ export async function createHandbooks(options) {
     if (options.feats) {
         log("Creating Feat handbook")
         journalPromises.push(
-            createGroupedItembook("feat", "Feats", folder, options.styleOption)
+            createGroupedItembook("feat", SETTINGS.feat.label, folder, options.styleOption)
         );
     }
 
@@ -67,7 +69,7 @@ export async function createHandbooks(options) {
     
     // Wait for all handbooks to be created and notify user
     await Promise.all(journalPromises);
-    ui.notifications.notify("Created player options journals");
+    ui.notifications.notify(game.i18n.localize("DCM.Handbook.Created"));
 }
 
 /**

@@ -14,10 +14,10 @@ import { getSetting, MODULE_NAME, setSetting, SETTINGS } from "../settings.mjs";
  * @returns {Promise<void>} Resolves when the compendium and journal entries are created.
  */
 export async function createOverrideCompendium() {
-    const newCompendium = await CompendiumCollection.createCompendium(
+    const newCompendium = await foundry.documents.collections.CompendiumCollection.createCompendium(
         {
             name: "dcm-overrides",
-            label: "DCM Overrides",
+            label: game.i18n.localize("DCM.Override.Label"),
             type: "JournalEntry",
             ownership: {ASSISTANT: 'OWNER'},
             package: "world",
@@ -26,11 +26,12 @@ export async function createOverrideCompendium() {
         }
     )
 
-    for (const journalName of ["Class", "Background", "Species"]) {
-        await JournalEntry.create({name: journalName}, {pack:newCompendium.metadata.id})
+    for (const journalKey of ["Class", "Background", "Species"]) {
+        const name = game.i18n.localize(`DCM.Override.Journal.${journalKey}`);
+        await JournalEntry.create({name}, {pack:newCompendium.metadata.id})
     }
 
-    ui.notifications.info("Created DCM Overrides Compendium")
+    ui.notifications.info(game.i18n.localize("DCM.Override.Created"))
 }
 
 /**
@@ -76,12 +77,12 @@ export function handleOverrideSettingChange() {
  * @returns {Object} An object where keys are compendium identifiers and values are their display labels.
  */
 export function getOverrideCompendiumOptions() {
-    const options = [["none", "<No Override Compendium>"]];
+    const options = [["none", game.i18n.localize("DCM.Settings.OverrideCompendium.None")]];
 
     if (game.packs.get("world.dcm-overrides")) {
-        options.push(["world.dcm-overrides", "<Default | DCM Overrides>"])
+        options.push(["world.dcm-overrides", game.i18n.localize("DCM.Settings.OverrideCompendium.Default")])
     } else {
-        options.push(["default", "<Create Default Compendium>"])
+        options.push(["default", game.i18n.localize("DCM.Settings.OverrideCompendium.Create")])
     }
 
     return Object.fromEntries(

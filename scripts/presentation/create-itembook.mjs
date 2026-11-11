@@ -18,7 +18,7 @@ function makeIndexPage(label, itemGroups) {
         }
     )]
 
-    const content = `<p>The following ${label} can be used to build your character</p>${entries}`
+    const content = `<p>${game.i18n.format("DCM.Handbook.IndexIntro", { label })}</p>${entries}`
 
     return makePage(
         label,
@@ -42,7 +42,7 @@ async function makeBackgroundIndexPage(label, itemGroups) {
         }
     )])
 
-    const content = `<p>The following ${label} can be used to build your character</p>${entries.join("<hr/>")}`
+    const content = `<p>${game.i18n.format("DCM.Handbook.IndexIntro", { label })}</p>${entries.join("<hr/>")}`
 
     return makePage(
         label,
@@ -70,7 +70,7 @@ function makeGroupedIndexPage(label, itemTypeMap) {
         }
     )
 
-    const content = `<p>The following ${label} can be used to build your character</p>${entries}`
+    const content = `<p>${game.i18n.format("DCM.Handbook.IndexIntro", { label })}</p>${entries}`
 
     return makePage(
         label,
@@ -102,11 +102,11 @@ function makeCombinedPage(label, items) {
  * @returns {string} Formatted string (e.g., "Strength, Dexterity and Constitution" or "Any")
  */
 function formatAbilityScoreText(abilities) {
-    if (abilities.length === 6) return "Any";
+    if (abilities.length === 6) return game.i18n.localize("DCM.Handbook.AnyAbility");
     
     return abilities.length === 1 
         ? abilities[0] 
-        : `${abilities.slice(0, -1).join(", ")} and ${abilities[abilities.length - 1]}`;
+        : game.i18n.format("DCM.Handbook.AbilityList", { list: abilities.slice(0, -1).join(", "), last: abilities[abilities.length - 1] });
 }
 
 
@@ -121,7 +121,7 @@ function formatAbilityScoreText(abilities) {
  */
 async function createBackgroundTable(backgrounds) {
     // Define table column headers
-    const headers = ["Background", "Ability Scores", "Feat"];
+    const headers = ["Background", "AbilityScores", "Feat"].map(k => game.i18n.localize(`DCM.Handbook.Column.${k}`));
     
     // Process each background to create table rows
     const rows = await Promise.all(backgrounds.map(async backgroundUuid => {
@@ -136,8 +136,8 @@ async function createBackgroundTable(backgrounds) {
         // Initialize default row with linked background name
         const tableRow = [
             `@UUID[${background.uuid}]{${background.name}}`,
-            'Not Set',
-            'Not Set'
+            game.i18n.localize("DCM.Handbook.NotSet"),
+            game.i18n.localize("DCM.Handbook.NotSet")
         ];
         
         // If no advancement data, return default row
@@ -321,7 +321,7 @@ export async function createGroupedItembook(itemtype, defaultName, folder, sheet
         if (!itemTypeMap.has(type)) {
             itemTypeMap.set(type, 
                 {
-                    label: item.system.type.label ? item.system.type.label + "s" : defaultName,
+                    label: item.system.type.label ? game.i18n.format("DCM.Handbook.ItemTypePlural", { type: item.system.type.label }) : defaultName,
                     items: [item]
                 }
             )

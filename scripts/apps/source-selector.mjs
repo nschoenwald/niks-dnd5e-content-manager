@@ -30,12 +30,11 @@ export class SourceSelector extends HandlebarsApplicationMixin(ApplicationV2) {
     static DEFAULT_OPTIONS = {
             tag: "form",
             window: {
-                title: "Compendium Source Selector",
+                title: "DCM.SourceSelector.Title",
                 icon: "fas fa-book-open-reader",
                 resizeable: true
             },
             id: 'compendium-selector',
-            title: 'Select Compendia',
             classes: ["dcm dnd5e2 dialog-lg compendium-browser selector"],
             position: {
                 width: 900,
@@ -152,10 +151,10 @@ export class SourceSelector extends HandlebarsApplicationMixin(ApplicationV2) {
 
     _getSourceName(sourceType, sourceId) {
         if (sourceType === "world") {
-            return "World";
+            return game.i18n.localize("DCM.Common.World");
         };
         if (sourceType === "system") {
-            return "D&D 5E Core";
+            return game.i18n.localize("DCM.Common.SystemSource");
         };
         return game.modules.get(sourceId).title;
     }
