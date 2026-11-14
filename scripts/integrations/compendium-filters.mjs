@@ -1,6 +1,5 @@
 import { log, warn } from "../lib.mjs";
-
-const fetchFunc = dnd5e.applications.CompendiumBrowser.fetch;
+import { MODULE_NAME } from "../settings.mjs";
 
 /** Per-window GM View state, kept on the CompendiumBrowser instance. Never saved: a new window starts filtered. */
 const GM_VIEW = Symbol("dcmGmView");
@@ -12,8 +11,28 @@ const GM_VIEW = Symbol("dcmGmView");
  */
 let showAllContent = false;
 
-function patchedFetch(...args) {
-    const results = fetchFunc(...args);
+/**
+ * Wraps a method with libWrapper when it is active, so other modules wrapping the same method (e.g. Nik's DnD5e
+ * Tweaks' Compendium Browser columns) chain cleanly without libWrapper's conflict warning. Without libWrapper the
+ * method is replaced by a wrapper that calls the previous one.
+ * @param {object} owner      Object holding the method.
+ * @param {string} path       Path of the method from globalThis, for libWrapper.
+ * @param {string} name       Method name on the owner.
+ * @param {Function} wrapper  `function(wrapped, ...args)`, called with the original `this`.
+ */
+function wrapMethod(owner, path, name, wrapper) {
+    if (globalThis.libWrapper?.register) {
+        libWrapper.register(MODULE_NAME, path, wrapper, "WRAPPER");
+        return;
+    }
+    const original = owner[name];
+    owner[name] = function(...args) {
+        return wrapper.call(this, (...a) => original.apply(this, a), ...args);
+    };
+}
+
+function patchedFetch(wrapped, ...args) {
+    const results = wrapped(...args);
     if (showAllContent) return results;
     return results
         .then(result => result.filter(r => {
@@ -32,20 +51,20 @@ function patchedFetch(...args) {
  */
 function patchResultsContext() {
     const proto = dnd5e.applications.CompendiumBrowser.prototype;
-    const original = proto._prepareResultsContext;
-    if (typeof original !== "function") {
+    if (typeof proto._prepareResultsContext !== "function") {
         warn("CompendiumBrowser#_prepareResultsContext not found, GM View is unavailable");
         return false;
     }
-    proto._prepareResultsContext = function(context, options) {
-        if (!this[GM_VIEW]) return original.call(this, context, options);
-        showAllContent = true;
-        try {
-            return original.call(this, context, options);
-        } finally {
-            showAllContent = false;
-        }
-    };
+    wrapMethod(proto, "dnd5e.applications.CompendiumBrowser.prototype._prepareResultsContext", "_prepareResultsContext",
+        function(wrapped, context, options) {
+            if (!this[GM_VIEW]) return wrapped(context, options);
+            showAllContent = true;
+            try {
+                return wrapped(context, options);
+            } finally {
+                showAllContent = false;
+            }
+        });
     return true;
 }
 
@@ -113,7 +132,8 @@ export function patchCompendiumBrowser() {
     // Hijack the CompendiumBrowsers fetch function to restrict to only the
     // items we care about.
 
-    dnd5e.applications.CompendiumBrowser.fetch = patchedFetch;
+    const browser = dnd5e.applications.CompendiumBrowser;
+    wrapMethod(browser, "dnd5e.applications.CompendiumBrowser.fetch", "fetch", patchedFetch);
     const gmViewAvailable = patchResultsContext();
 
     Hooks.on("renderCompendiumBrowser", (app) => {

@@ -1,3 +1,7 @@
+### 14.3.2
+Bug Fixes:
+- No more libWrapper warning about a conflict with Nik's DnD5e Tweaks when both modules are active. The Content Manager now hooks into the Compendium Browser through libWrapper (when installed), so both modules work together cleanly
+
 ### 14.3.1
 Bug Fixes:
 - GM View no longer draws a line through the Compendium Browser's title, and the "i" icon of the GM View note is no longer cut off
