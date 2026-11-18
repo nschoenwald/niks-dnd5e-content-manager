@@ -30,6 +30,18 @@
         </search>
     </div>
 
+    {{#if (gt modules.length 1)}}
+    <div class="sidebar-part module-filter">
+        <span class="filter-title">{{ localize "DCM.Sidebar.ModuleFilter" }}</span>
+        <select name="module-filter" aria-label="{{ localize 'DCM.Sidebar.ModuleFilter' }}">
+            <option value="" {{#unless moduleFilter}}selected{{/unless}}>{{ localize "DCM.Sidebar.AllModules" }}</option>
+            {{#each modules}}
+            <option value="{{ id }}" {{#if (eq id ../moduleFilter)}}selected{{/if}}>{{ label }}</option>
+            {{/each}}
+        </select>
+    </div>
+    {{/if}}
+
     {{#if groups}}
         <div class="filter">
             <span class="filter-title">{{ localize "DCM.Sidebar.GroupBy" }}</span>

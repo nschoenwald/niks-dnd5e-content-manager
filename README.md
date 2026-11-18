@@ -40,6 +40,7 @@ The goal of the DCM is to give DMs full control over what options are available 
 - Generate formatted Journals to show your players that contain the approved player options, including full spell lists for each class
 - Create and register new class and subclass spell lists without writing a new module
 - Quickly identify duplicate items coming from multiple sources
+- Filter the Player Content Configuration menu by module to work through one source at a time
 - GM View: GMs can switch the Compendium Browser to show everything, unfiltered, with one click
 - Available in English and German
 - Integrates with the [Quick Insert](https://foundryvtt.com/packages/quick-insert) and [Spotlight Omnisearch](https://foundryvtt.com/packages/spotlight-omnisearch) modules so only your chosen items are available within their search windows
@@ -55,6 +56,14 @@ Once installed it is simple to configure which options are available via the mod
 5. (Optional) To enable Spotlight Omnisearch or Quick Insert integration make sure you select this in the main settings menu and reload.
 
 Once you've done this, any unselected content is hidden within the Compendium Browser. You can add or remove new options at any time, and unlike with creating compendium specifically for a particular game - there's no deletion, duplication or copying involved so no need to manage updates or changes! Though you'll need to re-generate the player journals when options change
+
+### Filtering the Player Content Configuration
+The sidebar of the Player Content Configuration menu helps you find entries:
+- **Search** by name.
+- **Module**: when a tab's sources come from more than one module, pick one from the dropdown to show only that module's entries (world compendiums appear as "World", the D&D 5e system's own as its title). "Select All" then only affects the entries shown. Combined with **Duplicates Only**, it shows which of that module's entries also exist in another source.
+- **Group By**, **Unique Only** and **Duplicates Only** (on tabs that support grouping).
+
+Switching tabs resets the filters.
 
 ### GM View in the Compendium Browser
 GMs see an eye button in the Compendium Browser's title bar. Click it to switch that window to **GM View**, which shows all content, including what is hidden from players. A note above the results and the gold eye button show that GM View is on. Click the button again to go back to the player view. GM View only affects the window you switched, is never saved, and every newly opened Compendium Browser starts in the player view. Players don't see the button.

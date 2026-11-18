@@ -1,3 +1,7 @@
+### 14.4.0
+New Features:
+- Module filter in the Player Content Configuration menu: a dropdown in the sidebar shows only the entries of one module. Select All then only changes what's shown, and together with "Duplicates Only" it lists which of that module's entries also exist in another source
+
 ### 14.3.2
 Bug Fixes:
 - No more libWrapper warning about a conflict with Nik's DnD5e Tweaks when both modules are active. The Content Manager now hooks into the Compendium Browser through libWrapper (when installed), so both modules work together cleanly

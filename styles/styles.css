@@ -405,6 +405,24 @@
     height: 2em;
   }
   
+  /* Module filter dropdown below the search
+     ----------------- */
+  .dcm .sidebar .module-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    margin: 0 0 1em;
+  }
+
+  .dcm .sidebar .module-filter .filter-title {
+    font-family: var(--dnd5e-font-roboto-slab);
+  }
+
+  .dcm .sidebar .module-filter select {
+    width: 100%;
+    height: 2em;
+  }
+
   /* Search Input Focus States
      ----------------- */
   .dnd5e2 item-list-controls search > input[type="text"]:hover,

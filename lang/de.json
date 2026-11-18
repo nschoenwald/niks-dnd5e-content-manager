@@ -134,7 +134,9 @@
       "GroupBy": "Gruppieren nach:",
       "Filter": "Filter:",
       "UniqueOnly": "Nur einmalige",
-      "DuplicatesOnly": "Nur Duplikate"
+      "DuplicatesOnly": "Nur Duplikate",
+      "ModuleFilter": "Modul:",
+      "AllModules": "Alle Module"
     },
     "EnableMenu": {
       "Title": "Gefilterte Typen wählen",

@@ -57,7 +57,8 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
         this.currentFilters = {
             name: null,
             minItems: 0,
-            unique: false
+            unique: false,
+            module: null
         }
 
         //Set if we want to ask the user to reload when closing the app
@@ -336,6 +337,18 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
     async _onRender(context, options) {
         await super._onRender(context, options);
         this._applySearch();
+        this.element.querySelector("select[name=module-filter]")
+            ?.addEventListener("change", this._onSelectModule.bind(this));
+    }
+
+    /**
+     * Handles a change of the module filter dropdown.
+     *
+     * @param {Event} event - The change event of the dropdown.
+     */
+    _onSelectModule(event) {
+        this.currentFilters.module = event.target.value || null;
+        this.render(false);
     }
 
     /**
@@ -384,7 +397,8 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
         this.currentFilters = {
             name: null,
             minItems: 0,
-            unique: false
+            unique: false,
+            module: null
         }
 
         //Keep duplicate selection between tabs
@@ -706,6 +720,21 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
             return { id: pack.metadata.id, entries };
         }))).filter(r => r !== null)
 
+        //Modules that have rows in this tab, for the module filter dropdown
+        const modules = new Map();
+        for (const group of grouped_options) {
+            for (const e of group.entries) {
+                if (!modules.has(e.module)) modules.set(e.module, e.moduleName ?? e.module);
+            }
+        }
+        this._moduleOptions = [...modules].map(([id, label]) => ({id, label}))
+            .sort((a, b) => compare(a.label, b.label));
+
+        //Forget a module filter whose module no longer has rows (e.g. its sources were removed)
+        if (this.currentFilters.module && !modules.has(this.currentFilters.module)) {
+            this.currentFilters.module = null;
+        }
+
         //Apply the unique/duplicate filters if selected
         if (this.currentFilters.minItems > 0 || this.currentFilters.unique) {
             const labels = new Map();
@@ -729,6 +758,15 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
                         .filter(e => labels.get(e.searchName) === 1)
                 })
             }
+        }
+
+        //Apply the module filter after counting duplicates, so "Duplicates Only" still compares
+        //against every source and shows which of this module's entries also exist elsewhere
+        const moduleFilter = this.currentFilters.module;
+        if (moduleFilter) {
+            grouped_options.forEach(group => {
+                group.entries = group.entries.filter(e => e.module === moduleFilter)
+            })
         }
 
         return grouped_options
@@ -891,6 +929,8 @@ export class ContentSelector extends HandlebarsApplicationMixin(ApplicationV2) {
         context.unique = this.currentFilters.unique
         context.numSources = selectedCompendia.length
         context.searchText = this.currentFilters.name ?? ""
+        context.modules = this._moduleOptions ?? []
+        context.moduleFilter = this.currentFilters.module ?? ""
 
         return context;
     }
