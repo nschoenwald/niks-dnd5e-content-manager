@@ -1,3 +1,7 @@
+### 14.4.1
+Improvements:
+- The Compendium Browser filters results a little faster when you change its filters.
+
 ### 14.4.0
 New Features:
 - Module filter in the Player Content Configuration menu: a dropdown in the sidebar shows only the entries of one module. Select All then only changes what's shown, and together with "Duplicates Only" it lists which of that module's entries also exist in another source

@@ -1,7 +1,7 @@
 {
   "id": "niks-dnd5e-content-manager",
   "title": "Nik's DnD Content Manager",
-  "version": "14.4.0",
+  "version": "14.4.1",
   "compatibility": {
     "minimum": "13",
     "maximum": "14",

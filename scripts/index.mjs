@@ -49,6 +49,7 @@ export class DCMIndex extends Object {
         log("Rebuilding DCM Index")
         this.itemTypeToIndexMap = DCMIndex._buildIndexMap();
         this.permittedItemIndices = DCMIndex._buildItemIndices();
+        this.parsedCompendiumUuids = new Map();
         CONFIG.dndContentManager.forceRebuild = false;
     }
 
@@ -70,20 +71,24 @@ export class DCMIndex extends Object {
         }
 
         try {
-            //Have to reparse UUID as they sometimes use a slightly different format
-            const parsedUuid = foundry.utils.parseUuid(uuid);
+            //Have to reparse UUID as they sometimes use a slightly different format.
+            //Compendium results are remembered until the next rebuild: the browser filters every result on each fetch
+            this.parsedCompendiumUuids ??= new Map();
+            let parsed = this.parsedCompendiumUuids.get(uuid);
+            if (!parsed) {
+                const parsedUuid = foundry.utils.parseUuid(uuid);
 
-            //If compendium isn't considered an enabled source, skip item
-            //No metadata case is for world items which currently are kept enabled
-            if (parsedUuid.collection?.metadata &&
-                    !this.permittedItemIndices[indexName].sources.has(parsedUuid.collection.metadata.id)) {
-                return false;
-            } else if (!parsedUuid.collection?.metadata) {
-                return true;
+                //No metadata case is for world items which currently are kept enabled
+                if (!parsedUuid.collection?.metadata) return true;
+                parsed = {source: parsedUuid.collection.metadata.id, uuid: parsedUuid.uuid};
+                this.parsedCompendiumUuids.set(uuid, parsed);
             }
 
+            //If compendium isn't considered an enabled source, skip item
+            if (!this.permittedItemIndices[indexName].sources.has(parsed.source)) return false;
+
             //Finally check if in index
-            return this.permittedItemIndices[indexName].items.has(parsedUuid.uuid)
+            return this.permittedItemIndices[indexName].items.has(parsed.uuid)
         } catch (e) {
             warn(`Error checking index for ${uuid}: ${e.message}`)
             return true
